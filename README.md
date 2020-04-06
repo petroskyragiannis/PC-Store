@@ -49,4 +49,4 @@
 
 > Οι υπάλληλοι του καταστήματος πρέπει να ενημερώνουν τον κατάλογο των προϊόντων με τα στοιχεία αποθέματος, την τιμή και τη συμβατότητα μεταξύ των εξαρτημάτων.
 
-[<a href="https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/use-case-model.md">Μοντέλο Περιπτώσεων Χρήσης</a>](https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/use-case-model.md)
+# [<a href="https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/use-case-model.md">Μοντέλο Περιπτώσεων Χρήσης</a>](https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/use-case-model.md)
