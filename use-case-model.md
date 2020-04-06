@@ -1,3 +1,4 @@
+[](https://gitlab.com/softeng-2019-20/pc-store/-/raw/master/requirements/R1_UML.png)
 ## Σύντομη Περιγραφή Περιπτώσεων Χρήσης
 
 #### Δημιουργία Λογαριασμού
