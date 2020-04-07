@@ -14,4 +14,4 @@
 ## Διαγράμματα
 
 ### Διάγραμμα Δραστηριότητας
-[<img src="https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/requirements/diagrams/activity-order.png">](https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/requirements/diagrams/activity-order.png)
+[<img src="https://gitlab.com/softeng-2019-20/pc-store/-/raw/master/requirements/diagrams/activity-order.png">](https://gitlab.com/softeng-2019-20/pc-store/-/raw/master/requirements/diagrams/activity-order.png)
