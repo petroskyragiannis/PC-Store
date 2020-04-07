@@ -12,3 +12,5 @@
 #### [<a href="https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/requirements/uc6.md">ΠΧ6 Υποβολή Παραγγελίας]()
 #### [<a href="https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/requirements/uc7.md">ΠΧ7 Ενημέρωση Καταλόγου Προϊόντων]()
 #### [<a href="https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/requirements/uc8.md">ΠΧ8 Αναφορές Μηνιαίων Εσόδων]()
+
+## Επιχειρησιακοί Κανόνες
