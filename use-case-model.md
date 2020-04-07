@@ -2,7 +2,7 @@
 
 ## Περιγραφές Περιπτώσεων Χρήσης
 
-#### [<a href="https://github.com/bzafiris/softeng-project-template/tree/master/requirements/uc1.md">Text</a](href="https://github.com/bzafiris/softeng-project-template/tree/master/requirements/uc1.md)
+#### [<a href="https://github.com/bzafiris/softeng-project-template/tree/master/requirements/uc1.md">ΠΧ1 Εγγραφή Πελάτη](href="https://github.com/bzafiris/softeng-project-template/tree/master/requirements/uc1.md)
 #### ΠΧ2 Ταυτοποίηση Χρήστη
 #### ΠΧ3 Αναζήτηση Προϊόντων
 #### ΠΧ4 Σύνθεση Η/Υ
