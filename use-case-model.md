@@ -1,4 +1,4 @@
-[<img src="https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/requirements/diagrams/use-case-diagram.png">](https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/requirements/diagrams/use-case-diagram.uxf)
+[<img src="https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/requirements/diagrams/use-case-diagram.png">](https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/requirements/diagrams/use-case-diagram.png)
 
 ## Περιγραφές Περιπτώσεων Χρήσης
 
