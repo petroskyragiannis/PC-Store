@@ -1,8 +1,9 @@
-# ΠΧ1 Εγγραφή Πελάτη
+# ΠΧ1 Είσοδος Πελάτη
 
-##### Πρωτεύων Actor:
+##### Πρωτεύων Actor: Πελάτης
 
 ##### Ενδιαφερόμενοι:
+Πελάτης: Θέλει να συνδεθεί στο σύστημα.
 
 ##### Προϋποθέσεις:
 
@@ -13,4 +14,4 @@
 ## Διαγράμματα
 
 ### Διάγραμμα Δραστηριότητας
-[<img src="https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/requirements/diagrams/activity-registration.png">]()
+[<img src="https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/requirements/diagrams/activity-sign-in.png">](https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/requirements/diagrams/activity-sign-in.png)
