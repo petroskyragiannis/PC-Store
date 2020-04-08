@@ -25,3 +25,7 @@
 
 
 ## [<a href="https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/use-case-model.md">Μοντέλο Περιπτώσεων Χρήσης</a>](https://gitlab.com/softeng-2019-20/pc-store/-/blob/master/use-case-model.md)
+
+## Μοντέλο Πεδίου
+
+## [<img src="https://gitlab.com/softeng-2019-20/pc-store/-/raw/master/requirements/diagrams/domain-model.png">](https://gitlab.com/softeng-2019-20/pc-store/-/raw/master/requirements/diagrams/domain-model.png)
