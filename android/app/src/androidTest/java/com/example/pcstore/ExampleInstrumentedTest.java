@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.pcstore;
 
 import android.content.Context;
 
