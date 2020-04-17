@@ -36,7 +36,7 @@
 -ημερομηνίαΥποβολής: Date
 -ολοκληρώθηκε: boolean
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>560</y><w>160</w><h>150</h></coordinates><panel_attributes>Σύνθεση Η/Υ
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>560</y><w>160</w><h>220</h></coordinates><panel_attributes>Σύνθεση Η/Υ
 --
 -κουτί: Εξάρτημα
 -επεξεργαστής: Εξάρτημα
@@ -45,6 +45,11 @@
 -κάρταΓραφικών: Εξάρτημα
 -σκληρόςΔίσκος: Εξάρτημα
 -τροφοδοτικό: Εξάρτημα
+-σύστημαΨύξης: Εξάρτημα
+-πληκτρολόγιο: Εξάρτημα
+-ποντίκι: Εξάρτημα
+-οθόνη: Εξάρτημα
+-ηχεία: Εξάρτημα
 -τιμήΣύνθεσης: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>560</y><w>200</w><h>60</h></coordinates><panel_attributes>Απλή Γραμμή Παραγγελίας
 --
 -επιλεγμένοΠροϊόν: Προϊόν
@@ -78,7 +83,7 @@ m2=*
 πραγματοποιείται από &gt;</panel_attributes><additional_attributes>270;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>570</y><w>250</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=1
-περιλαμβάνει &gt;</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>100</x><y>700</y><w>520</w><h>130</h></coordinates><panel_attributes>lt=-
+περιλαμβάνει &gt;</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>100</x><y>750</y><w>520</w><h>80</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=*
-περιλαμβάνει &gt;</panel_attributes><additional_attributes>500;60;500;110;10;110;10;10</additional_attributes></element></diagram>
+περιλαμβάνει &gt;</panel_attributes><additional_attributes>500;10;500;60;10;60;10;30</additional_attributes></element></diagram>
