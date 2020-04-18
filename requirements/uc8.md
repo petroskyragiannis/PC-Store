@@ -25,4 +25,4 @@
 > 2. Η ΠΧ τερματιζει.
 
 ### Διάγραμμα Δραστηριότητας
-[<img src="https://gitlab.com/softeng-2019-20/pc-store/-/raw/master/requirements/diagrams/activity-update.png">](https://gitlab.com/softeng-2019-20/pc-store/-/raw/master/requirements/diagrams/activity-sign-in.png)
+[<img src="https://gitlab.com/softeng-2019-20/pc-store/-/raw/master/requirements/diagrams/activity-update.png">](https://gitlab.com/softeng-2019-20/pc-store/-/raw/master/requirements/diagrams/activity-update.png)
