@@ -1,229 +1,160 @@
-<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>490</x><y>550</y><w>260</w><h>210</h></coordinates><panel_attributes>CardInfo
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>70</x><y>467</y><w>210</w><h>90</h></coordinates><panel_attributes>CardInfo
 --
--cardHolderName: String
--cardNumber: String
--expirationDate: Date
--csv: String
+- &lt;&lt;Property&gt;&gt; cardHolderName: String
+- &lt;&lt;Property&gt;&gt; cardNumber: String
+- &lt;&lt;Property&gt;&gt; expirationDate: Date
+- &lt;&lt;Property&gt;&gt; csv: String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>347</y><w>320</w><h>210</h></coordinates><panel_attributes>Client
 --
-+getCardHolderName(): String {query}
-+setCardHolderName(cardHolderName: String)
-+getCardNumber(): String {query}
-+setCardNumber(cardNumber: String)
-+getExpirationDate(): Date {query}
-+setExpirationDate(expirationDate: Date)
-+getCsv(): String {query}
-+setCsv(csv: String)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>290</y><w>260</w><h>450</h></coordinates><panel_attributes>Client
+- &lt;&lt;Property&gt;&gt; address: Adress
+- &lt;&lt;Property&gt;&gt; card: CardInfo
+- &lt;&lt;Property&gt;&gt; cart: Set&lt;OrderLine&gt;
+- &lt;&lt;Property&gt;&gt; wishlist: Set&lt;Product&gt;
 --
--address: Adress
--card: CardInfo
--cart: Set&lt;Product&gt;
--wishlist: Set&lt;Product&gt;
---
-+getAddress(): Adress {query}
-+setAdress(address: Address)
-+getCard(): CardInfo {query}
-+setCard(card: CardInfo)
-+addToCart(p: Product)
-+removeFromCart(p: Product)
-+addToWishlist(p: Product)
-+removeFromWishlist(p: Product)
-+getStreet():  String {query}
-+setStreet(street: String)
-+getNumber(): String {query}
-+setNumber(number: String)
-+getTown(): String {query}
-+setTown(town: String)
-+getZipCode(): String {query}
-+setZipCode(zipCode: String)
-+getCardHolderName(): String {query}
-+setCardHolderName(cardHolderName: String)
-+getCardNumber(): String {query}
-+setCardNumber(cardNumber: String)
-+getExpirationDate(): Date {query}
-+setExpirationDate(expirationDate: Date)
-+getCsv(): String {query}
-+setCsv(csv: String)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1020</x><y>0</y><w>200</w><h>220</h></coordinates><panel_attributes>User
---
--username: String
--password: String
--name: String
--surname: String
--phoneNumber: String
--email: String
---
-+getUsername(): String {query}
-+getPassword(): String {query}
-+getName(): String {query}
-+getSurname(): String {query}
-+getPhoneNumber(): String {query}
-+getEmail(): String {query}
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>210</y><w>180</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>160;10;160;50;10;50;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1110</x><y>210</y><w>180</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50;160;50;160;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>920</y><w>170</w><h>220</h></coordinates><panel_attributes>Product
---
--id: int
--name: String
--stock: int
--price: int
--category: String
---
-+getId(): String {query}
-+getName(): String {query}
-+getStock(): int {query}
-+getPrice(): int {query}
-+getCategory(): String {query}
-+equals(o: Object): boolean
-+hashCode(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1190</x><y>310</y><w>160</w><h>60</h></coordinates><panel_attributes>Employee
---
--admin: boolean
---
-+isAdmin(): boolean {query}
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1270</x><y>420</y><w>230</w><h>270</h></coordinates><panel_attributes>Order
---
--id: int
--deliveryAddress: Address
--orderDate: Date
--completed: boolean
--client: Client
--orderLines: Set&lt;OrderLine&gt;
---
-+getId(): String {query}
-+getDeliveryAddress(): Address {query}
-+getOrderDate(): Date {query}
-+isCompleted(): boolean {query}
-+getClient(): Client {query}
-+setClient(client: Client)
-+getOrderLines():Set&lt;OrderLine&gt; {query}
-+add(o: OrderLine)
-+remove(o: OrderLine)
-+getTotal(): int
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1400</x><y>960</y><w>220</w><h>530</h></coordinates><panel_attributes>PcConfiguration
---
--pcCase: Component
--cpu: Component
--motherboard: Component
--ram: Component
--gpu: Component
--hardDrive: Component
--psu: Component
--mouse: Component
--keyboard: Component
--monitor: Component
---
-+getPcCase(): Component {query}
-+setPcCase(c1: Component)
-+getCpu(): Component {query}
-+setCpu(c1: Component)
-+getMotherboard(): Component {query}
-+setMotherboard(c1: Component)
-+getRam(): Component {query}
-+setRam(c1: Component)
-+getHardDrive(): Component {query}
-+setHardDrive(c1: Component)
-+getPsu(): Component {query}
-+setPsu(c1: Component)
-+getMouse(): Component {query}
-+setMouse(c1: Component)
-+getKeyboard(): Component {query}
-+setKeyboard(c1: Component)
-+getMonitor(): Component {query}
-+setMonitor(c1: Component)
-+checkRequirements(): boolean
-+checkCompatibility(): boolean
--checkCaseCompatibility():boolean
--checkMonitorCompatibility():boolean
-+getSubtotal(): int
+_+ registerClient(username: String, password: String): Client_
++ addToCart(product: Product, quantity: int)
++ addToCart(config: PcConfiguration)
++ removeFromCart(product: Product, quantity: int)
++ removeFromCart(config: PcConfiguration)
++ createOrder()
++ addToWishlist(p: Product)
++ removeFromWishlist(p: Product)
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1180</x><y>960</y><w>200</w><h>110</h></coordinates><panel_attributes>SimpleOrderLine
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>77</y><w>270</w><h>170</h></coordinates><panel_attributes>User
 --
--product: Product
--quantity: int
+- &lt;&lt;Property&gt;&gt; username: String
+- &lt;&lt;Property&gt;&gt; password: String
+- &lt;&lt;Property&gt;&gt; name: String
+- &lt;&lt;Property&gt;&gt; surname: String
+- &lt;&lt;Property&gt;&gt; phoneNumber: String
+- &lt;&lt;Property&gt;&gt; email: String
+_- &lt;&lt;Property&gt;&gt; registeredUsers: ArrayList&lt;User&gt;_
 --
-+getProduct(): Product {query}
-+getQuantity(): int {query}
-+getSubTotal: int
+_+ login(username: String, password: String): User_
+_+ loginAsGuest(): Client_
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>237</y><w>180</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>160;10;160;60;10;60;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>237</y><w>180</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;160;60;160;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>847</y><w>230</w><h>150</h></coordinates><panel_attributes>Product
+--
+- &lt;&lt;Property&gt;&gt; id: int
+- &lt;&lt;Property&gt;&gt; name: String
+- &lt;&lt;Property&gt;&gt; stock: int
+- &lt;&lt;Property&gt;&gt; price: int
+- &lt;&lt;Property&gt;&gt; category: String
+_- &lt;&lt;Property&gt;&gt; Catalog: Set&lt;Product&gt;_
+--
++ equals(o: Object): boolean {query}
++ hashCode(): int {query}</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>347</y><w>160</w><h>40</h></coordinates><panel_attributes>Employee
+--
+- &lt;&lt;Property&gt;&gt; admin: boolean
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>800</x><y>407</y><w>230</w><h>210</h></coordinates><panel_attributes>Order
+--
+_- counterId: int_
+- &lt;&lt;Property&gt;&gt; id: int
+- &lt;&lt;Property&gt;&gt; deliveryAddress: Address
+- &lt;&lt;Property&gt;&gt; orderDate: Date
+- &lt;&lt;Property&gt;&gt; completed: boolean
+- &lt;&lt;Property&gt;&gt; client: Client
+- &lt;&lt;Property&gt;&gt; total: int
+_- &lt;&lt;Property&gt;&gt; orderLines: Set&lt;OrderLine&gt;_
+--
++ updateStock()
+_+ getMonthlyReport(): int_
++addOrderLine(o: OrderLine)
++removeOrderLine(o: OrderLine)
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>930</x><y>957</y><w>250</w><h>270</h></coordinates><panel_attributes>PcConfiguration
+--
+- &lt;&lt;Property&gt;&gt; pcCase: Component
+- &lt;&lt;Property&gt;&gt; cpu: Component
+- &lt;&lt;Property&gt;&gt; motherboard: Component
+- &lt;&lt;Property&gt;&gt; ram: Component
+- &lt;&lt;Property&gt;&gt; gpu: Component
+- &lt;&lt;Property&gt;&gt; hardDrive: Component
+- &lt;&lt;Property&gt;&gt; psu: Component
+- &lt;&lt;Property&gt;&gt; mouse: Component
+- &lt;&lt;Property&gt;&gt; keyboard: Component
+- &lt;&lt;Property&gt;&gt; monitor: Component
+--
++ checkRequirements(): boolean {query}
++ checkCompatibility(): boolean {query}
+- checkCaseCompatibility(): boolean {query}
+- checkMonitorCompatibility(): boolean {query}
++ getSubtotal(): int {query}
++ updateStock()
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>957</y><w>170</w><h>90</h></coordinates><panel_attributes>SimpleOrderLine
+--
+- &lt;&lt;Property&gt;&gt; product: Product
+- &lt;&lt;Property&gt;&gt; quantity: int
+--
++ getSubTotal: int {query}
++ updateStock()
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1320</x><y>820</y><w>150</w><h>70</h></coordinates><panel_attributes>OrderLine
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>737</y><w>160</w><h>70</h></coordinates><panel_attributes>OrderLine
 {abstract}
 --
-getSubTotal() {abstract}
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>1240</y><w>170</w><h>130</h></coordinates><panel_attributes>ConnectionType
++ getSubTotal(): int {abstract}
++ updateStock() {abstract}
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>80</x><y>1067</y><w>200</w><h>90</h></coordinates><panel_attributes>ConnectionType
 --
--name: String
--required: boolean
+- &lt;&lt;Property&gt;&gt; name: String
+- &lt;&lt;Property&gt;&gt; required: boolean
 --
-+getName(): String {query}
-+isRequired(): boolean {query}
++ equals(o: Object): boolean {query}
++ hashCode(): int {query}
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>987</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>797</y><w>170</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;130;150;130;150;160</additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>797</y><w>140</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>120;10;120;130;10;130;10;160</additional_attributes></element><element><id>UMLClass</id><coordinates><x>70</x><y>347</y><w>170</w><h>90</h></coordinates><panel_attributes>Address
+--
+- &lt;&lt;Property&gt;&gt; street: String
+- &lt;&lt;Property&gt;&gt; number: String
+- &lt;&lt;Property&gt;&gt; town: String
+- &lt;&lt;Property&gt;&gt; zipCode: String
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>350</x><y>1067</y><w>270</w><h>90</h></coordinates><panel_attributes>Component
+--
+- &lt;&lt;Property&gt;&gt; type: ComponentType
+- &lt;&lt;Property&gt;&gt; providedPorts: Set&lt;ConnectionPort&gt;
+- &lt;&lt;Property&gt;&gt; requiredPorts: Set&lt;ConnectionPort&gt;
+--
++equals(o: Object): boolean {query}
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>400</x><y>1247</y><w>180</w><h>90</h></coordinates><panel_attributes>ConnectionPort
+--
+- &lt;&lt;Property&gt;&gt; name: String
+- &lt;&lt;Property&gt;&gt; description: String
+--
 +equals(o: Object): boolean
 +hashCode(): int
-
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>1130</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>1380</x><y>880</y><w>150</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;130;60;130;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1270</x><y>880</y><w>140</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>120;10;120;60;10;60;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>310</y><w>170</w><h>210</h></coordinates><panel_attributes>Address
---
--street: String
--number: String
--town: String
--zipCode: String
---
-+getStreet():  String {query}
-+setStreet(street: String)
-+getNumber(): String {query}
-+setNumber(number: String)
-+getTown(): String {query}
-+setTown(town: String)
-+getZipCode(): String {query}
-+setZipCode(zipCode: String)
-
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>830</x><y>1230</y><w>280</w><h>140</h></coordinates><panel_attributes>Component
---
--type: ComponentType
--providedPorts: Set&lt;ConnectionPort&gt;
--requiredPorts: Set&lt;ConnectionPort&gt;
---
-+getType(): ComponentType {query}
-+getProvidedPorts(): Set&lt;ConnectionPort&gt; {query}
-+getRequiredPorts(): Set&lt;ConnectionPort&gt; {query}
-+equals(o: Object): boolean
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>1450</y><w>180</w><h>120</h></coordinates><panel_attributes>ConnectionPort
---
-name: String
-description: String
---
-+getName(): String {query}
-+getDescription(): String {query}
-+equals(o: Object): boolean
-+hashCode(): int
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>1360</y><w>70</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>1147</y><w>70</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
 m1=*
 m2=*
 
 provide
-</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>1360</y><w>70</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>1147</y><w>70</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
 m1=*
 m2=*
 
 require
-</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1380</x><y>680</y><w>70</w><h>160</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>607</y><w>70</w><h>150</h></coordinates><panel_attributes>lt=-&gt;
 m1=1
 m2=*
-include</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>1040</x><y>1000</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+include</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>590</x><y>917</y><w>150</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
 m1=1
 m2=*
-include</panel_attributes><additional_attributes>10;20;140;20</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>1280</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+include</panel_attributes><additional_attributes>10;10;70;10;70;80;130;80</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>1097</y><w>100</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
 m1=1
 m2=*
-has type</panel_attributes><additional_attributes>10;20;140;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1100</x><y>1280</y><w>320</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+has type</panel_attributes><additional_attributes>10;20;80;20</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>1097</y><w>340</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
 m1=*
 m2=*
-include</panel_attributes><additional_attributes>10;20;300;20</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>400</y><w>170</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>150;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>630</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>730</y><w>70</w><h>210</h></coordinates><panel_attributes>lt=-&gt;
+include</panel_attributes><additional_attributes>10;20;320;20</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>387</y><w>130</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>507</y><w>90</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>547</y><w>70</w><h>320</h></coordinates><panel_attributes>lt=-&gt;
 m1=*
 remove
-m2=*</panel_attributes><additional_attributes>10;10;10;190</additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>730</y><w>50</w><h>210</h></coordinates><panel_attributes>lt=-&gt;
+m2=*</panel_attributes><additional_attributes>10;10;10;300</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>547</y><w>50</w><h>320</h></coordinates><panel_attributes>lt=-&gt;
 m1=*
 m2=*
 
 add
-</panel_attributes><additional_attributes>10;10;10;190</additional_attributes></element><element><id>Relation</id><coordinates><x>1090</x><y>520</y><w>200</w><h>50</h></coordinates><panel_attributes>lt=-&gt;
+</panel_attributes><additional_attributes>10;10;10;300</additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>477</y><w>170</w><h>50</h></coordinates><panel_attributes>lt=-&gt;
 m1=1
 m2=*
 create
-</panel_attributes><additional_attributes>10;20;180;20</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element></diagram>
