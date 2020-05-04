@@ -118,14 +118,12 @@ public class ClientTest {
         assertEquals(cartSet4,client4.getCart());
     }
 
-    //TODO
     @Test
     public void createOrder() {
         Order o = client.createOrder();
         assertEquals(order,o);
         assertEquals(5,p1.getStock());
         assertEquals(5,p2.getStock());
-
     }
 
     private void setUpConfig(PcConfiguration config){
