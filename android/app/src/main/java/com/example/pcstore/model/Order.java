@@ -12,7 +12,6 @@ import java.util.Set;
 
 public class Order {
 
-    private static int counterId = 0;
     private int id;
     private Client client;
     private Set<OrderLine> orderLines;
@@ -25,8 +24,6 @@ public class Order {
 
     // Constructors
     public Order(Client client, Set<OrderLine> orderLines) {
-        counterId++;
-        this.id = counterId;
         this.client = client;
         this.orderLines = orderLines;
         this.orderDate = new GregorianCalendar();

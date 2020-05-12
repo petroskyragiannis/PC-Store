@@ -11,6 +11,7 @@ public class User {
     private String surname;
     private String phoneNumber;
     private String email;
+    // TODO REMOVE STATIC
     private static Set<User> registeredUsers = new HashSet<>();
 
     // Constructors
@@ -19,38 +20,31 @@ public class User {
         this.password = password;
     }
 
-    public static Client register(String username, String password) {
-        for (User user : registeredUsers) {
-            if (user.getUsername().equalsIgnoreCase(username)) {
-                System.out.println("A user is already registered with username: " + username);
-                return null;
-            }
-        }
-        if (password.length() < 8) {
-            System.out.println( "Password (" + password + ") must be at least 8 characters.");
-        } else {
-            Client c = new Client(username, password);
-            registeredUsers.add(c);
-            System.out.println("Client " + username + " registered successfully.");
-            c.login(username, password);
-            return c;
-        }
-        return null;
+    // TODO REMOVE STATIC
+    public static Client register(String username, String password) throws RegisterException {
+        for (User user : registeredUsers)
+            if (user.getUsername().equalsIgnoreCase(username))
+                throw new RegisterException("A user is already registered with username: " + username);
+        if (password.length() < 8)
+            throw new RegisterException("Password (" + password + ") must be at least 8 characters.");
+        Client c = new Client(username, password);
+        registeredUsers.add(c);
+        c.login(username, password);
+        return c;
+
     }
     // Login Functions
-    public static User login(String username, String password) {
-        for (User user : registeredUsers) {
-            if (user.getUsername().equalsIgnoreCase(username) && user.getPassword().equalsIgnoreCase(password)) {
-                System.out.println("Login successful for user: " + username);
+    // TODO REMOVE STATIC
+    public static User login(String username, String password) throws RegisterException {
+        for (User user : registeredUsers)
+            if (user.getUsername().equalsIgnoreCase(username) && user.getPassword().equalsIgnoreCase(password))
                 return user;
-            }
-        }
-         System.out.println("Username (" + username + ") and password (" + password + ")don't match.");
-        return null;
+        throw new RegisterException("Username (" + username + ") and password (" + password + ")don't match.");
+
     }
 
+    // TODO REMOVE STATIC
     public static Client loginAsGuest() {
-        System.out.println("Login successful as guest.");
         return new Client("guest", "guest");
     }
 
@@ -73,9 +67,11 @@ public class User {
     }
 
     //RegisteredUsers Methods
+    // TODO REMOVE STATIC
     public static void addToRegisteredUsers(User user) {
         registeredUsers.add(user);
     }
+    // TODO REMOVE STATIC
     public static void removeFromRegisteredUsers(User user) {
         registeredUsers.remove(user);
     }
@@ -129,12 +125,19 @@ public class User {
         this.email = email;
     }
 
+    // TODO REMOVE STATIC
     public static Set<User> getRegisteredUsers() {
         return registeredUsers;
     }
 
+    // TODO REMOVE STATIC
     public static void setRegisteredUsers(Set<User> registeredUsers) {
         User.registeredUsers = registeredUsers;
     }
 
+    private static class RegisterException extends Exception {
+        public RegisterException(String message) {
+            super(message);
+        }
+    }
 }

@@ -34,19 +34,18 @@ public class PcConfiguration extends OrderLine {
     // Constructor
     public PcConfiguration() {}
 
-    public boolean checkRequirements() {
+    public boolean checkRequirements() throws CompatibilityException {
         Component requiredComponents[] = {pcCase, cpu, motherboard, ram, gpu, hardDrive, psu};
         for (Component c: requiredComponents) {
             if (c==null) {
-                System.out.println("Missing Required Component.");
-                return false;
+                throw new CompatibilityException("Missing Required Component.");
             }
         }
         return  true;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public boolean checkCompatibility() {
+    public boolean checkCompatibility() throws CompatibilityException {
         boolean flag = false;
         Component components[] = {cpu,ram,gpu,hardDrive,mouse,keyboard};
         for (Component c: components) {
@@ -55,31 +54,18 @@ public class PcConfiguration extends OrderLine {
                     for (ConnectionPort p: motherboard.getProvidedPorts()) {
                         if (p.equals(r)) flag=true;
                     }
-                    if (!flag) {
-                        System.out.println(c.getType().getName()+"-motherboard compatibility issue.");
-                        break;
-                    }
-
+                    if (!flag) throw new CompatibilityException(c.getType().getName()+"-motherboard compatibility issue.");
                 }
             }
             if (!flag) break;
         }
+        if (!checkCaseCompatibility())
+            throw new CompatibilityException("case-motherboard compatibility issue.");
+        if (monitor!=null)
+            if (!checkMonitorCompatibility())
+                throw new CompatibilityException("monitor-gpu compatibility issue.");
 
-        if (!checkCaseCompatibility()) {
-            System.out.println("case-motherboard compatibility issue.");
-            flag=false;
-        }
-
-        if (monitor!=null) {
-            if (!checkMonitorCompatibility()) {
-                System.out.println("monitor-gpu compatibility issue.");
-                flag=false;
-            }
-        }
-
-        if (flag) System.out.println("This PC Configuration is compatible.");
         return flag;
-
     }
 
     // PC Case only has provided ports.
@@ -90,8 +76,7 @@ public class PcConfiguration extends OrderLine {
             for (ConnectionPort p: pcCase.getProvidedPorts()) {
                 if (p.equals(r)) flag=true;
             }
-            if (flag) continue;
-            else break;
+            if (!flag) break;
         }
         return flag;
     }
@@ -269,4 +254,9 @@ public class PcConfiguration extends OrderLine {
         }
     }
 
+    private static class CompatibilityException extends Exception {
+        public CompatibilityException(String message) {
+            super(message);
+        }
+    }
 }

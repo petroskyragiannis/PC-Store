@@ -20,10 +20,9 @@ public class Client extends User {
     }
 
     // Cart Methods
-    public void addToCart(Product product, int quantity) {
+    public void addToCart(Product product, int quantity) throws OutOfStockException {
         if (quantity > product.getStock()) {
-            System.out.println("Not enough stock of this product.");
-            return;
+            throw new OutOfStockException("There is not enough quantity of this product");
         }
         if (cart.size() != 0) {
             for (OrderLine o : cart) {
@@ -124,5 +123,10 @@ public class Client extends User {
         this.wishlist = wishlist;
     }
 
+    public static class OutOfStockException extends Exception {
+        public OutOfStockException(String message) {
+            super(message);
+        }
+    }
 
 }
