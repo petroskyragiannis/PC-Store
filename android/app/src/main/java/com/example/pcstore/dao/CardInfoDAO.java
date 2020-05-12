@@ -12,6 +12,6 @@ public interface CardInfoDAO {
 
     List<CardInfo> findAll();
 
-    CardInfo find(int number);
+    CardInfo find(String number);
 
 }

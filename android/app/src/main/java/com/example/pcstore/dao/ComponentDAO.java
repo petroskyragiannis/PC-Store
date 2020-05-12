@@ -13,7 +13,7 @@ public interface ComponentDAO {
 
     List<Component> findAll();
 
-    Component find(String id);
+    Component find(int id);
 
     Component findByName(String name);
 }

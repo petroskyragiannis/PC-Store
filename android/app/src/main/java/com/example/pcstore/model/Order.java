@@ -20,7 +20,6 @@ public class Order {
     private Calendar orderDate;
     private Address deliveryAddress;
     private String paymentMethod;
-    private static Set<Order> orders = new HashSet<>();
 
     // Constructors
     public Order(Client client, Set<OrderLine> orderLines) {
@@ -29,22 +28,10 @@ public class Order {
         this.orderDate = new GregorianCalendar();
         this.completed = false;
         this.total = getTotal();
-        orders.add(this);
     }
 
     public void updateStock() {
         for (OrderLine orderLine: orderLines) orderLine.updateStock();
-    }
-
-    //TODO Android
-    public static int getMonthlyReport(int month) {
-        int monthlyIncome = 0;
-        for (Order order: orders) {
-            if (order.getOrderDate().get(Calendar.MONTH)==month) {
-                monthlyIncome += order.getTotal();
-            }
-        }
-        return monthlyIncome;
     }
 
     // OrderLine Methods
@@ -155,12 +142,17 @@ public class Order {
         this.total = total;
     }
 
-    public static Set<Order> getOrders() {
-        return orders;
+    //TODO Android
+    /*
+    public static int getMonthlyReport(int month) {
+        int monthlyIncome = 0;
+        for (Order order: orders) {
+            if (order.getOrderDate().get(Calendar.MONTH)==month) {
+                monthlyIncome += order.getTotal();
+            }
+        }
+        return monthlyIncome;
     }
 
-    public static void setOrders(Set<Order> orders) {
-        Order.orders = orders;
-    }
-
+     */
 }

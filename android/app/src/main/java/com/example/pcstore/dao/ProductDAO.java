@@ -13,7 +13,7 @@ public interface ProductDAO {
 
     List<Product> findAll();
 
-    Product find(String id);
+    Product find(int id);
 
     Product findByName(String name);
 

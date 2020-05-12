@@ -125,15 +125,6 @@ public class User {
         this.email = email;
     }
 
-    // TODO REMOVE STATIC
-    public static Set<User> getRegisteredUsers() {
-        return registeredUsers;
-    }
-
-    // TODO REMOVE STATIC
-    public static void setRegisteredUsers(Set<User> registeredUsers) {
-        User.registeredUsers = registeredUsers;
-    }
 
     private static class RegisterException extends Exception {
         public RegisterException(String message) {

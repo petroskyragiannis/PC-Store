@@ -30,12 +30,14 @@ public class PcConfiguration extends OrderLine {
     private Component mouse;
     private Component keyboard;
     private Component monitor;
+    private Component[] components = {pcCase, cpu, motherboard, ram, gpu, hardDrive, psu, mouse, keyboard, monitor};
+
 
     // Constructor
     public PcConfiguration() {}
 
     public boolean checkRequirements() throws CompatibilityException {
-        Component requiredComponents[] = {pcCase, cpu, motherboard, ram, gpu, hardDrive, psu};
+        Component[] requiredComponents = {pcCase, cpu, motherboard, ram, gpu, hardDrive, psu};
         for (Component c: requiredComponents) {
             if (c==null) {
                 throw new CompatibilityException("Missing Required Component.");
@@ -47,8 +49,8 @@ public class PcConfiguration extends OrderLine {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public boolean checkCompatibility() throws CompatibilityException {
         boolean flag = false;
-        Component components[] = {cpu,ram,gpu,hardDrive,mouse,keyboard};
-        for (Component c: components) {
+        Component[] MotherboardComponents = {cpu,ram,gpu,hardDrive,mouse,keyboard};
+        for (Component c: MotherboardComponents) {
             if (c != null) {
                 for (ConnectionPort r: c.getRequiredPorts()) {
                     for (ConnectionPort p: motherboard.getProvidedPorts()) {
@@ -94,7 +96,6 @@ public class PcConfiguration extends OrderLine {
     @Override
     public int getSubTotal() {
         int total = 0;
-        Component components[] = {pcCase, cpu, motherboard, ram, gpu, hardDrive, psu, mouse, keyboard, monitor};
         for (Component c : components) {
             if (c != null) total += c.getPrice();
         }
@@ -103,7 +104,6 @@ public class PcConfiguration extends OrderLine {
 
     @Override
     public void updateStock() {
-        Component components[] = {pcCase, cpu, motherboard, ram, gpu, hardDrive, psu, mouse, keyboard, monitor};
         for (Component c: components)
             if (c!=null) c.setStock(c.getStock() - 1);
     }
@@ -252,6 +252,14 @@ public class PcConfiguration extends OrderLine {
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.monitor = c1;
         }
+    }
+
+    public Component[] getComponents() {
+        return components;
+    }
+
+    public void setComponents(Component[] components) {
+        this.components = components;
     }
 
     private static class CompatibilityException extends Exception {

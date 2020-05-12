@@ -16,6 +16,6 @@ public interface OrderDAO {
 
     List<Order> findAllPending();
 
-    Order find(String id);
+    Order find(int id);
 
 }

@@ -21,8 +21,7 @@ public class AddressDAOMemory implements AddressDAO {
 
     @Override
     public List<Address> findAll() {
-        ArrayList<Address> result = new ArrayList<Address>();
-        result.addAll(entities);
-        return result;
+        return new ArrayList<Address>(entities);
+
     }
 }

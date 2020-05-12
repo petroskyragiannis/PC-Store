@@ -15,17 +15,15 @@ public class Component extends Product {
     private Set<ConnectionPort> requiredPorts = new HashSet<>();
 
     // Constructors
-    public Component(String id, String name, int stock, int price, String category) {
+    public Component(int id, String name, int stock, int price, String category) {
         super(id, name, stock, price, category);
-        Product.addToCatalog(this);
     }
 
-    public Component(String id, String name, int stock, int price, String category, ComponentType type, Set<ConnectionPort> providedPorts, Set<ConnectionPort> requiredPorts) {
+    public Component(int id, String name, int stock, int price, String category, ComponentType type, Set<ConnectionPort> providedPorts, Set<ConnectionPort> requiredPorts) {
         super(id, name, stock, price, category);
         this.type = type;
         this.providedPorts = providedPorts;
         this.requiredPorts = requiredPorts;
-        Product.addToCatalog(this);
     }
 
     // ConnectionPort Methods
