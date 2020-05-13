@@ -20,6 +20,15 @@ public class User {
         this.password = password;
     }
 
+    public User(String username, String password, String name, String surname, String phoneNumber, String email) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
     // TODO REMOVE STATIC
     public static Client register(String username, String password) throws RegisterException {
         for (User user : registeredUsers)

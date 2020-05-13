@@ -8,8 +8,6 @@ public class Address {
     private String zipCode;
 
     // Constructors
-    public Address() {
-    }
 
     public Address(String street, String number, String town, String zipCode) {
         this.street = street;

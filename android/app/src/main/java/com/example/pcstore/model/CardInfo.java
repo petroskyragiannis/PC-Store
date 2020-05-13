@@ -1,16 +1,20 @@
 package com.example.pcstore.model;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class CardInfo {
 
     private String cardHolderName;
     private String cardNumber;
-    private Date expirationDate;
+    private Calendar expirationDate;
     private String csv;
 
     // Constructors
-    public CardInfo() {
+    public CardInfo(String cardHolderName, String cardNumber, Calendar expirationDate, String csv) {
+        this.cardHolderName = cardHolderName;
+        this.cardNumber = cardNumber;
+        this.expirationDate = expirationDate;
+        this.csv = csv;
     }
 
     @Override
@@ -35,13 +39,6 @@ public class CardInfo {
         return result;
     }
 
-    public CardInfo(String cardHolderName, String cardNumber, Date expirationDate, String csv) {
-        this.cardHolderName = cardHolderName;
-        this.cardNumber = cardNumber;
-        this.expirationDate = expirationDate;
-        this.csv = csv;
-    }
-
     // Getters and Setters
     public String getCardHolderName() {
         return cardHolderName;
@@ -59,11 +56,11 @@ public class CardInfo {
         this.cardNumber = cardNumber;
     }
 
-    public Date getExpirationDate() {
+    public Calendar getExpirationDate() {
         return expirationDate;
     }
 
-    public void setExpirationDate(Date expirationDate) {
+    public void setExpirationDate(Calendar expirationDate) {
         this.expirationDate = expirationDate;
     }
 

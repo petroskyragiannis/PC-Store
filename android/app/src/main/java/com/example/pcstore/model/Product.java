@@ -9,10 +9,10 @@ public class Product {
     private String name;
     private int stock;
     private int price;
-    private String category;
+    private Hardware category;
 
     // Constructors
-    public Product(int id, String name, int stock, int price, String category) {
+    public Product(int id, String name, int stock, int price, Hardware category) {
         this.id = id;
         this.name = name;
         this.stock = stock;
@@ -31,7 +31,7 @@ public class Product {
         if (price != product.price) return false;
         if (id != product.id) return false;
         if (!name.equalsIgnoreCase(product.name)) return false;
-        return category.equalsIgnoreCase(product.category);
+        return category.equals(product.category);
     }
 
     @Override
@@ -77,11 +77,11 @@ public class Product {
         this.price = price;
     }
 
-    public String getCategory() {
+    public Hardware getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Hardware category) {
         this.category = category;
     }
 

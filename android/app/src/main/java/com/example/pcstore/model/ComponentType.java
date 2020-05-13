@@ -2,14 +2,14 @@ package com.example.pcstore.model;
 
 public class ComponentType {
 
-    private String name;
+    private Hardware name;
     private boolean required;
 
     // Constructors
     public ComponentType() {
     }
 
-    public ComponentType(String name, boolean required) {
+    public ComponentType(Hardware name, boolean required) {
         this.name = name;
         this.required = required;
     }
@@ -22,7 +22,7 @@ public class ComponentType {
         ComponentType that = (ComponentType) o;
 
         if (required != that.required) return false;
-        return name.equalsIgnoreCase(that.name);
+        return name.equals(that.name);
     }
 
     @Override
@@ -33,11 +33,11 @@ public class ComponentType {
     }
 
     // Getters and Setters
-    public String getName() {
+    public Hardware getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Hardware name) {
         this.name = name;
     }
 

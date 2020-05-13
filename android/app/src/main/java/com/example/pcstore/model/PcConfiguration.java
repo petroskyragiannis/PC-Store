@@ -30,11 +30,26 @@ public class PcConfiguration extends OrderLine {
     private Component mouse;
     private Component keyboard;
     private Component monitor;
-    private Component[] components = {pcCase, cpu, motherboard, ram, gpu, hardDrive, psu, mouse, keyboard, monitor};
+
+    private Component[] components;
 
 
     // Constructor
     public PcConfiguration() {}
+
+    public PcConfiguration(Component pcCase, Component cpu, Component motherboard, Component ram, Component gpu, Component hardDrive, Component psu, Component mouse, Component keyboard, Component monitor) {
+        this.pcCase = pcCase;
+        this.cpu = cpu;
+        this.motherboard = motherboard;
+        this.ram = ram;
+        this.gpu = gpu;
+        this.hardDrive = hardDrive;
+        this.psu = psu;
+        this.mouse = mouse;
+        this.keyboard = keyboard;
+        this.monitor = monitor;
+        components = new Component[] {pcCase, cpu, motherboard, ram, gpu, hardDrive, psu, mouse, keyboard, monitor};
+    }
 
     public boolean checkRequirements() throws CompatibilityException {
         Component[] requiredComponents = {pcCase, cpu, motherboard, ram, gpu, hardDrive, psu};
@@ -149,7 +164,7 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setPcCase(Component c1) {
-        ComponentType c2 = new ComponentType("case", true);
+        ComponentType c2 = new ComponentType(Hardware.CASE, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.pcCase = c1;
         }
@@ -160,7 +175,7 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setCpu(Component c1) {
-        ComponentType c2 = new ComponentType("cpu", true);
+        ComponentType c2 = new ComponentType(Hardware.CPU, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.cpu = c1;
         }
@@ -171,7 +186,7 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setMotherboard(Component c1) {
-        ComponentType c2 = new ComponentType("motherboard", true);
+        ComponentType c2 = new ComponentType(Hardware.MOTHERBOARD, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.motherboard = c1;
         }
@@ -182,7 +197,7 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setRam(Component c1) {
-        ComponentType c2 = new ComponentType("ram", true);
+        ComponentType c2 = new ComponentType(Hardware.RAM, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.ram = c1;
         }
@@ -193,7 +208,7 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setGpu(Component c1) {
-        ComponentType c2 = new ComponentType("gpu", true);
+        ComponentType c2 = new ComponentType(Hardware.GPU, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.gpu = c1;
         }
@@ -204,7 +219,7 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setHardDrive(Component c1) {
-        ComponentType c2 = new ComponentType("hardDrive", true);
+        ComponentType c2 = new ComponentType(Hardware.HARD_DRIVE, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.hardDrive = c1;
         }
@@ -215,7 +230,7 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setPsu(Component c1) {
-        ComponentType c2 = new ComponentType("psu", true);
+        ComponentType c2 = new ComponentType(Hardware.PSU, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.psu = c1;
         }
@@ -226,7 +241,7 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setMouse(Component c1) {
-        ComponentType c2 = new ComponentType("mouse", false);
+        ComponentType c2 = new ComponentType(Hardware.MOUSE, false);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.mouse = c1;
         }
@@ -237,7 +252,7 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setKeyboard(Component c1) {
-        ComponentType c2 = new ComponentType("keyboard", false);
+        ComponentType c2 = new ComponentType(Hardware.KEYBOARD, false);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.keyboard = c1;
         }
@@ -248,7 +263,7 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setMonitor(Component c1) {
-        ComponentType c2 = new ComponentType("monitor", false);
+        ComponentType c2 = new ComponentType(Hardware.MONITOR, false);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.monitor = c1;
         }

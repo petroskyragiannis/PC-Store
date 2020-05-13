@@ -15,19 +15,26 @@ public class Order {
     private int id;
     private Client client;
     private Set<OrderLine> orderLines;
-    private int total;
     private boolean completed;
     private Calendar orderDate;
-    private Address deliveryAddress;
-    private String paymentMethod;
+    private Delivery deliveryMethod;
+    private Payment paymentMethod;
 
     // Constructors
+
     public Order(Client client, Set<OrderLine> orderLines) {
         this.client = client;
         this.orderLines = orderLines;
-        this.orderDate = new GregorianCalendar();
-        this.completed = false;
-        this.total = getTotal();
+    }
+
+    public Order(int id, Client client, Set<OrderLine> orderLines, boolean completed, Calendar orderDate, Delivery deliveryMethod, Payment paymentMethod) {
+        this.id = id;
+        this.client = client;
+        this.orderLines = orderLines;
+        this.completed = completed;
+        this.orderDate = orderDate;
+        this.deliveryMethod = deliveryMethod;
+        this.paymentMethod = paymentMethod;
     }
 
     public void updateStock() {
@@ -43,34 +50,24 @@ public class Order {
         orderLines.remove(o);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Order)) return false;
-
+        if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-
-        if (completed != order.completed) return false;
-        if (total != order.total) return false;
-        if (!client.equals(order.client)) return false;
-        if (!orderLines.equals(order.orderLines)) return false;
-        if (!orderDate.equals(order.orderDate)) return false;
-        if (!Objects.equals(deliveryAddress, order.deliveryAddress)) return false;
-        return Objects.equals(paymentMethod, order.paymentMethod);
+        return id == order.id &&
+                completed == order.completed &&
+                client.equals(order.client) &&
+                orderLines.equals(order.orderLines) &&
+                orderDate.equals(order.orderDate) &&
+                deliveryMethod == order.deliveryMethod &&
+                paymentMethod == order.paymentMethod;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + client.hashCode();
-        result = 31 * result + orderLines.hashCode();
-        result = 31 * result + (completed ? 1 : 0);
-        result = 31 * result + orderDate.hashCode();
-        result = 31 * result + (deliveryAddress != null ? deliveryAddress.hashCode() : 0);
-        result = 31 * result + (paymentMethod != null ? paymentMethod.hashCode() : 0);
-        result = 31 * result + total;
-        return result;
+        return Objects.hash(id, client, orderLines, completed, orderDate, deliveryMethod, paymentMethod);
     }
 
     //Getters and Setters
@@ -114,19 +111,19 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public Address getDeliveryAddress() {
-        return deliveryAddress;
+    public Delivery getDeliveryMethod() {
+        return deliveryMethod;
     }
 
-    public void setDeliveryAddress(Address deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
+    public void setDeliveryMethod(Delivery deliveryMethod) {
+        this.deliveryMethod = deliveryMethod;
     }
 
-    public String getPaymentMethod() {
+    public Payment getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(Payment paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 
@@ -136,10 +133,6 @@ public class Order {
             total += orderLine.getSubTotal();
         }
         return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
     }
 
     //TODO Android

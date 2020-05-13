@@ -19,6 +19,12 @@ public class Client extends User {
         super(username, password);
     }
 
+    public Client(String username, String password, String name, String surname, String phoneNumber, String email, Address address, CardInfo card) {
+        super(username, password, name, surname, phoneNumber, email);
+        this.address = address;
+        this.card = card;
+    }
+
     // Cart Methods
     public void addToCart(Product product, int quantity) throws OutOfStockException {
         if (quantity > product.getStock()) {

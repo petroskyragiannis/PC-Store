@@ -8,11 +8,11 @@ import java.util.Objects;
 
 public class ConnectionPort {
 
-    private String name;
+    private Hardware name;
     private String description;
 
     // Constructors
-    public ConnectionPort(String name, String description) {
+    public ConnectionPort(Hardware name, String description) {
         this.name = name;
         this.description = description;
     }
@@ -25,7 +25,7 @@ public class ConnectionPort {
 
         ConnectionPort that = (ConnectionPort) o;
 
-        if (!name.equalsIgnoreCase(that.name)) return false;
+        if (!name.equals(that.name)) return false;
         return Objects.equals(description, that.description);
     }
 
@@ -37,11 +37,11 @@ public class ConnectionPort {
     }
 
     // Getters and Setters
-    public String getName() {
+    public Hardware getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Hardware name) {
         this.name = name;
     }
 

@@ -19,6 +19,7 @@ public class UserDAOMemory implements UserDAO {
         entities.remove(entity);
     }
 
+
     @Override
     public List<User> findAll() {
         return new ArrayList<User>(entities);
