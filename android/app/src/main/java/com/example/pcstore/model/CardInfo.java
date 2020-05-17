@@ -1,8 +1,9 @@
 package com.example.pcstore.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class CardInfo {
+public class CardInfo implements Serializable {
 
     private String cardHolderName;
     private String cardNumber;

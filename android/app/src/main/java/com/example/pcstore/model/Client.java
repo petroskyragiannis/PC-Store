@@ -4,6 +4,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,9 +27,10 @@ public class Client extends User {
     }
 
     // Cart Methods
-    public void addToCart(Product product, int quantity) throws OutOfStockException {
+    public void addToCart(Product product, int quantity){
         if (quantity > product.getStock()) {
-            throw new OutOfStockException("There is not enough quantity of this product");
+            //throw new OutOfStockException("There is not enough quantity of this product");
+            return;
         }
         if (cart.size() != 0) {
             for (OrderLine o : cart) {

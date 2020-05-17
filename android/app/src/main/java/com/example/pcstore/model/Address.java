@@ -1,6 +1,8 @@
 package com.example.pcstore.model;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
 
     private String street;
     private String number;

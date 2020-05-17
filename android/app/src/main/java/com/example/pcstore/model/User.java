@@ -1,9 +1,8 @@
 package com.example.pcstore.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
 
-public class User {
+public class User implements Serializable {
 
     private String username;
     private String password;
@@ -11,8 +10,6 @@ public class User {
     private String surname;
     private String phoneNumber;
     private String email;
-    // TODO REMOVE STATIC
-    private static Set<User> registeredUsers = new HashSet<>();
 
     // Constructors
     public User(String username, String password) {
@@ -27,34 +24,6 @@ public class User {
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.email = email;
-    }
-
-    // TODO REMOVE STATIC
-    public static Client register(String username, String password) throws RegisterException {
-        for (User user : registeredUsers)
-            if (user.getUsername().equalsIgnoreCase(username))
-                throw new RegisterException("A user is already registered with username: " + username);
-        if (password.length() < 8)
-            throw new RegisterException("Password (" + password + ") must be at least 8 characters.");
-        Client c = new Client(username, password);
-        registeredUsers.add(c);
-        c.login(username, password);
-        return c;
-
-    }
-    // Login Functions
-    // TODO REMOVE STATIC
-    public static User login(String username, String password) throws RegisterException {
-        for (User user : registeredUsers)
-            if (user.getUsername().equalsIgnoreCase(username) && user.getPassword().equalsIgnoreCase(password))
-                return user;
-        throw new RegisterException("Username (" + username + ") and password (" + password + ")don't match.");
-
-    }
-
-    // TODO REMOVE STATIC
-    public static Client loginAsGuest() {
-        return new Client("guest", "guest");
     }
 
     @Override
@@ -75,15 +44,6 @@ public class User {
         return result;
     }
 
-    //RegisteredUsers Methods
-    // TODO REMOVE STATIC
-    public static void addToRegisteredUsers(User user) {
-        registeredUsers.add(user);
-    }
-    // TODO REMOVE STATIC
-    public static void removeFromRegisteredUsers(User user) {
-        registeredUsers.remove(user);
-    }
 
     //Getters and Setters
     public String getUsername() {
@@ -134,10 +94,45 @@ public class User {
         this.email = email;
     }
 
+    /*
+    private static Set<User> registeredUsers = new HashSet<>();
 
-    private static class RegisterException extends Exception {
+    public static Client register(String username, String password) throws RegisterException {
+        for (User user : registeredUsers)
+            if (user.getUsername().equalsIgnoreCase(username))
+                throw new RegisterException("A user is already registered with username: " + username);
+        if (password.length() < 8)
+            throw new RegisterException("Password (" + password + ") must be at least 8 characters.");
+        Client c = new Client(username, password);
+        registeredUsers.add(c);
+        c.login(username, password);
+        return c;
+
+    }
+
+    public static User login(String username, String password) throws RegisterException {
+        for (User user : registeredUsers)
+            if (user.getUsername().equalsIgnoreCase(username) && user.getPassword().equalsIgnoreCase(password))
+                return user;
+        throw new RegisterException("Username (" + username + ") and password (" + password + ")don't match.");
+
+    }
+
+    public static Client loginAsGuest() {
+        return new Client("guest", "guest");
+    }
+
+    public static void addToRegisteredUsers(User user) {
+        registeredUsers.add(user);
+    }
+
+    public static void removeFromRegisteredUsers(User user) {
+        registeredUsers.remove(user);
+    }
+        private static class RegisterException extends Exception {
         public RegisterException(String message) {
             super(message);
         }
     }
+    */
 }

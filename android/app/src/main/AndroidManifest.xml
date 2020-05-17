@@ -12,9 +12,16 @@
         <activity android:name="com.example.pcstore.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.example.pcstore.RegisterActivity">
+        </activity>
+        <activity android:name="com.example.pcstore.CatalogActivity">
+        </activity>
+        <activity android:name="com.example.pcstore.ConfigurationActivity">
+        </activity>
+        <activity android:name="com.example.pcstore.ChooseComponentActivity">
         </activity>
     </application>
 
