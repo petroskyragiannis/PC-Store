@@ -4,9 +4,10 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class ConnectionPort {
+public class ConnectionPort implements Serializable {
 
     private Hardware name;
     private String description;

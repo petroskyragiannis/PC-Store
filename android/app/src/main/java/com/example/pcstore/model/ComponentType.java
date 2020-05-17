@@ -1,6 +1,13 @@
 package com.example.pcstore.model;
 
-public class ComponentType {
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+public class ComponentType implements Serializable {
 
     private Hardware name;
     private boolean required;
@@ -17,19 +24,16 @@ public class ComponentType {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ComponentType)) return false;
-
+        if (o == null || getClass() != o.getClass()) return false;
         ComponentType that = (ComponentType) o;
-
-        if (required != that.required) return false;
-        return name.equals(that.name);
+        return required == that.required &&
+                name == that.name;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + (required ? 1 : 0);
-        return result;
+        return Objects.hash(name, required);
     }
 
     // Getters and Setters

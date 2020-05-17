@@ -20,12 +20,10 @@ public class CatalogActivity extends AppCompatActivity
 
     TextView txtConfiguration;
     ImageButton btnConfiguration;
-
     RecyclerView recyclerView;
     private CatalogAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private CatalogViewModel viewModel;
-
     Client client;
 
     @Override
@@ -70,12 +68,7 @@ public class CatalogActivity extends AppCompatActivity
 
     @Override
     public void onItemSelected(Product item) {
-        viewModel.getPresenter().onProductSelected(item);
-    }
-
-    @Override
-    public void addToCart(Product product) {
-        client.addToCart(product, 1);
+        viewModel.getPresenter().onProductSelected(client, item);
     }
 
     @Override
@@ -85,6 +78,7 @@ public class CatalogActivity extends AppCompatActivity
 
     public void createCustomConfiguration() {
         Intent intent = new Intent(this, ConfigurationActivity.class);
+        intent.putExtra(MainActivity.SIGNED_IN_CLIENT, client);
         startActivity(intent);
     }
 }

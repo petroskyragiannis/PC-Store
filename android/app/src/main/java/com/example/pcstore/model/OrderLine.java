@@ -1,6 +1,8 @@
 package com.example.pcstore.model;
 
-public abstract class OrderLine {
+import java.io.Serializable;
+
+public abstract class OrderLine implements Serializable {
 
     public abstract int getSubTotal();
 

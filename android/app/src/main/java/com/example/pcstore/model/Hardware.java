@@ -10,4 +10,5 @@ public enum Hardware {
     SATA3, M2,
     USB2, USB3, THUNDERPORT,
     HDMI,DVID,VGA,DPORT
+
 }

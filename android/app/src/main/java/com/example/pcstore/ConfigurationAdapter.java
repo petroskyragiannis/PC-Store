@@ -22,7 +22,7 @@ public class ConfigurationAdapter extends RecyclerView.Adapter<ConfigurationAdap
         public ViewHolder(ViewGroup v) {
             super(v);
             listItem = v;
-            txtCategory = listItem.findViewById(R.id.txt_category);
+            txtCategory = listItem.findViewById(R.id.txt_type);
             btnSelectCategory = listItem.findViewById(R.id.btn_select_category);
         }
     }

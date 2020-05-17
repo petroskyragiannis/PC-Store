@@ -180,38 +180,38 @@ public abstract class Initializer {
                 new HashSet<ConnectionPort>()));
 
         componentDAO.save(new Component(productDAO.nextId(), "Razer Deathadder V2", 10, 70, Hardware.COMPONENT,
-                new ComponentType(Hardware.MOUSE,true),
+                new ComponentType(Hardware.MOUSE,false),
                 new HashSet<ConnectionPort>(),
                 new HashSet<ConnectionPort>(Arrays.asList(
                         new ConnectionPort(Hardware.USB3, "")))));
 
         componentDAO.save(new Component(productDAO.nextId(), "Logitech MX Master 3", 10, 100, Hardware.COMPONENT,
-                new ComponentType(Hardware.MOUSE,true),
+                new ComponentType(Hardware.MOUSE,false),
                 new HashSet<ConnectionPort>(),
                 new HashSet<ConnectionPort>(Arrays.asList(
                         new ConnectionPort(Hardware.USB3, "")))));
 
         componentDAO.save(new Component(productDAO.nextId(), "Motospeed CK108", 10, 50, Hardware.COMPONENT,
-                new ComponentType(Hardware.KEYBOARD,true),
+                new ComponentType(Hardware.KEYBOARD,false),
                 new HashSet<ConnectionPort>(),
                 new HashSet<ConnectionPort>(Arrays.asList(
                         new ConnectionPort(Hardware.USB3, "")))));
 
         componentDAO.save(new Component(productDAO.nextId(), "Logitech K400 Plus", 10, 30, Hardware.COMPONENT,
-                new ComponentType(Hardware.KEYBOARD,true),
+                new ComponentType(Hardware.KEYBOARD,false),
                 new HashSet<ConnectionPort>(),
                 new HashSet<ConnectionPort>(Arrays.asList(
                         new ConnectionPort(Hardware.USB3, "")))));
 
         componentDAO.save(new Component(productDAO.nextId(), "AOC 24G2U", 10, 250, Hardware.COMPONENT,
-                new ComponentType(Hardware.MONITOR,true),
+                new ComponentType(Hardware.MONITOR,false),
                 new HashSet<ConnectionPort>(),
                 new HashSet<ConnectionPort>(Arrays.asList(
                         new ConnectionPort(Hardware.HDMI, ""),
                         new ConnectionPort(Hardware.DPORT, "")))));
 
         componentDAO.save(new Component(productDAO.nextId(), "Dell S2719DGF", 10, 350, Hardware.COMPONENT,
-                new ComponentType(Hardware.MONITOR,true),
+                new ComponentType(Hardware.MONITOR,false),
                 new HashSet<ConnectionPort>(),
                 new HashSet<ConnectionPort>(Arrays.asList(
                         new ConnectionPort(Hardware.HDMI, ""),

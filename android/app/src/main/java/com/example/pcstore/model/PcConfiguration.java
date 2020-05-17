@@ -4,6 +4,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 public class PcConfiguration extends OrderLine {
@@ -164,10 +165,10 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setPcCase(Component c1) {
-        ComponentType c2 = new ComponentType(Hardware.CASE, true);
-        if (c1.getType().equals(c2) && c1.getStock()>0) {
+        //ComponentType c2 = new ComponentType(Hardware.CASE, true);
+        //if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.pcCase = c1;
-        }
+        //}
     }
 
     public Component getCpu() {
@@ -175,10 +176,10 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setCpu(Component c1) {
-        ComponentType c2 = new ComponentType(Hardware.CPU, true);
-        if (c1.getType().equals(c2) && c1.getStock()>0) {
+        //ComponentType c2 = new ComponentType(Hardware.CPU, true);
+        //if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.cpu = c1;
-        }
+        //}
     }
 
     public Component getMotherboard() {
@@ -277,7 +278,7 @@ public class PcConfiguration extends OrderLine {
         this.components = components;
     }
 
-    private static class CompatibilityException extends Exception {
+    public static class CompatibilityException extends Exception {
         public CompatibilityException(String message) {
             super(message);
         }
