@@ -30,9 +30,9 @@ public class ChooseComponentActivity extends AppCompatActivity
     PcConfiguration config;
     TextView txtType;
     RecyclerView recyclerView;
-    private CatalogAdapter mAdapter;
+    private ProductAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private CatalogViewModel viewModel;
+    private ProductViewModel viewModel;
 
 
     @Override
@@ -48,9 +48,9 @@ public class ChooseComponentActivity extends AppCompatActivity
 
         txtType.setText(type);
 
-        viewModel = new ViewModelProvider(this).get(CatalogViewModel.class);
-        final CatalogPresenter catalogPresenter = viewModel.getPresenter();
-        catalogPresenter.setView(this);
+        viewModel = new ViewModelProvider(this).get(ProductViewModel.class);
+        final ProductPresenter productPresenter = viewModel.getPresenter();
+        productPresenter.setView(this);
 
         // Extract the correct component type
         String[] split = type.split("\\s+");
@@ -63,8 +63,8 @@ public class ChooseComponentActivity extends AppCompatActivity
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         // Specify an adapter
-        List<Product> components = catalogPresenter.getComponents(componentType);
-        mAdapter = new CatalogAdapter(components);
+        List<Product> components = productPresenter.getComponents(componentType);
+        mAdapter = new ProductAdapter(components);
         recyclerView.setAdapter(mAdapter);
         // Register current activity as listener for product selection events
         mAdapter.setItemSelectionListener(this);

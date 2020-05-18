@@ -28,10 +28,8 @@ public class Client extends User {
 
     // Cart Methods
     public void addToCart(Product product, int quantity){
-        if (quantity > product.getStock()) {
-            //throw new OutOfStockException("There is not enough quantity of this product");
+        if (quantity > product.getStock())
             return;
-        }
         if (cart.size() != 0) {
             for (OrderLine o : cart) {
                 if (o instanceof SimpleOrderLine) {

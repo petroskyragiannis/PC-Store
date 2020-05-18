@@ -43,8 +43,7 @@ public class User implements Serializable {
         result = 31 * result + password.hashCode();
         return result;
     }
-
-
+    
     //Getters and Setters
     public String getUsername() {
         return username;
@@ -94,45 +93,4 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    /*
-    private static Set<User> registeredUsers = new HashSet<>();
-
-    public static Client register(String username, String password) throws RegisterException {
-        for (User user : registeredUsers)
-            if (user.getUsername().equalsIgnoreCase(username))
-                throw new RegisterException("A user is already registered with username: " + username);
-        if (password.length() < 8)
-            throw new RegisterException("Password (" + password + ") must be at least 8 characters.");
-        Client c = new Client(username, password);
-        registeredUsers.add(c);
-        c.login(username, password);
-        return c;
-
-    }
-
-    public static User login(String username, String password) throws RegisterException {
-        for (User user : registeredUsers)
-            if (user.getUsername().equalsIgnoreCase(username) && user.getPassword().equalsIgnoreCase(password))
-                return user;
-        throw new RegisterException("Username (" + username + ") and password (" + password + ")don't match.");
-
-    }
-
-    public static Client loginAsGuest() {
-        return new Client("guest", "guest");
-    }
-
-    public static void addToRegisteredUsers(User user) {
-        registeredUsers.add(user);
-    }
-
-    public static void removeFromRegisteredUsers(User user) {
-        registeredUsers.remove(user);
-    }
-        private static class RegisterException extends Exception {
-        public RegisterException(String message) {
-            super(message);
-        }
-    }
-    */
 }

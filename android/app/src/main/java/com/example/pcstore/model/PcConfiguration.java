@@ -64,24 +64,27 @@ public class PcConfiguration extends OrderLine {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public boolean checkCompatibility() throws CompatibilityException {
+
         boolean flag = false;
         Component[] MotherboardComponents = {cpu,ram,gpu,hardDrive,mouse,keyboard};
+
         for (Component c: MotherboardComponents) {
             if (c != null) {
                 for (ConnectionPort r: c.getRequiredPorts()) {
                     for (ConnectionPort p: motherboard.getProvidedPorts()) {
                         if (p.equals(r)) flag=true;
                     }
-                    if (!flag) throw new CompatibilityException(c.getType().getName()+"-motherboard compatibility issue.");
+                    if (!flag) throw new CompatibilityException(c.getType().getName()+" and MOTHERBOARD are not compatible.");
                 }
             }
             if (!flag) break;
         }
+
         if (!checkCaseCompatibility())
-            throw new CompatibilityException("case-motherboard compatibility issue.");
+            throw new CompatibilityException("CASE and MOTHERBOARD are not compatible.");
         if (monitor!=null)
             if (!checkMonitorCompatibility())
-                throw new CompatibilityException("monitor-gpu compatibility issue.");
+                throw new CompatibilityException("GPU and MONITOR are not compatible.");
 
         return flag;
     }
@@ -165,10 +168,10 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setPcCase(Component c1) {
-        //ComponentType c2 = new ComponentType(Hardware.CASE, true);
-        //if (c1.getType().equals(c2) && c1.getStock()>0) {
+        ComponentType c2 = new ComponentType(Hardware.CASE, true);
+        if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.pcCase = c1;
-        //}
+        }
     }
 
     public Component getCpu() {
@@ -176,10 +179,10 @@ public class PcConfiguration extends OrderLine {
     }
 
     public void setCpu(Component c1) {
-        //ComponentType c2 = new ComponentType(Hardware.CPU, true);
-        //if (c1.getType().equals(c2) && c1.getStock()>0) {
+        ComponentType c2 = new ComponentType(Hardware.CPU, true);
+        if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.cpu = c1;
-        //}
+        }
     }
 
     public Component getMotherboard() {

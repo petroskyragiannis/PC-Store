@@ -3,18 +3,18 @@ package com.example.pcstore;
 import androidx.lifecycle.ViewModel;
 import com.example.pcstore.memorydao.ProductDAOMemory;
 
-public class CatalogViewModel extends ViewModel {
+public class ProductViewModel extends ViewModel {
 
-    CatalogPresenter presenter;
+    ProductPresenter presenter;
 
-    public CatalogViewModel() {
+    public ProductViewModel() {
         super();
-        presenter = new CatalogPresenter();
+        presenter = new ProductPresenter();
         ProductDAOMemory productDAOMemory = new ProductDAOMemory();
         presenter.setProductDAO(productDAOMemory);
     }
 
-    public CatalogPresenter getPresenter() {
+    public ProductPresenter getPresenter() {
         return presenter;
     }
 

@@ -10,12 +10,12 @@ import com.example.pcstore.model.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CatalogPresenter {
+public class ProductPresenter {
 
     private CatalogView view;
     private ProductDAO productDAO;
 
-    public CatalogPresenter() {}
+    public ProductPresenter() {}
 
     public List<Product> getCatalog() {
         return productDAO.findAll();

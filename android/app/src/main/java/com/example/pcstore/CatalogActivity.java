@@ -21,9 +21,9 @@ public class CatalogActivity extends AppCompatActivity
     TextView txtConfiguration;
     ImageButton btnConfiguration;
     RecyclerView recyclerView;
-    private CatalogAdapter mAdapter;
+    private ProductAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private CatalogViewModel viewModel;
+    private ProductViewModel viewModel;
     Client client;
 
     @Override
@@ -38,10 +38,10 @@ public class CatalogActivity extends AppCompatActivity
         client = (Client) intent.getSerializableExtra(MainActivity.SIGNED_IN_CLIENT);
 
 
-        viewModel = new ViewModelProvider(this).get(CatalogViewModel.class);
-        final CatalogPresenter catalogPresenter = viewModel.getPresenter();
-        catalogPresenter.setView(this);
-        List<Product> catalog = catalogPresenter.getCatalog();
+        viewModel = new ViewModelProvider(this).get(ProductViewModel.class);
+        final ProductPresenter productPresenter = viewModel.getPresenter();
+        productPresenter.setView(this);
+        List<Product> catalog = productPresenter.getCatalog();
 
         recyclerView = findViewById(R.id.catalog_rv);
         recyclerView.setHasFixedSize(true);
@@ -49,7 +49,7 @@ public class CatalogActivity extends AppCompatActivity
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         // Specify an adapter
-        mAdapter = new CatalogAdapter(catalog);
+        mAdapter = new ProductAdapter(catalog);
         recyclerView.setAdapter(mAdapter);
         // Register current activity as listener for product selection events
         mAdapter.setItemSelectionListener(this);

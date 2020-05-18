@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.pcstore.model.Product;
 import java.util.List;
 
-public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.ViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
     private List<Product> itemList;
     // A reference to a listener for book selection events.
@@ -29,7 +29,7 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.ViewHold
         }
     }
 
-    public CatalogAdapter(List<Product> mDataset) {
+    public ProductAdapter(List<Product> mDataset) {
         itemList = mDataset;
     }
 
