@@ -21,41 +21,34 @@ import java.util.List;
 public class ChooseComponentActivity extends AppCompatActivity
         implements ItemSelectionListener<Product>, CatalogView {
 
-    public static final String UPDATED_PC_CONFIGURATION = "updated_config";
-
+    public static final String UPDATED_PC_CONFIGURATION = "updated config";
+    //public static final String SELECTED_COMPONENT_NAME = "selected component name";
 
     Client client;
-    String type;
-    String componentType;
     PcConfiguration config;
-    TextView txtType;
+    String componentType;
+
+    TextView txtSelectType;
     RecyclerView recyclerView;
     private ProductAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ProductViewModel viewModel;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_component);
-        txtType = findViewById(R.id.txt_type);
+        txtSelectType = findViewById(R.id.txt_select_type);
 
         Intent intent = getIntent();
         client = (Client) intent.getSerializableExtra(MainActivity.SIGNED_IN_CLIENT);
-        type = intent.getStringExtra(ConfigurationActivity.COMPONENT_TYPE);
         config = (PcConfiguration) intent.getSerializableExtra((ConfigurationActivity.PC_CONFIGURATION));
-
-        txtType.setText(type);
+        componentType = intent.getStringExtra(ConfigurationActivity.COMPONENT_TYPE);
+        txtSelectType.setText("Select a " + componentType);
 
         viewModel = new ViewModelProvider(this).get(ProductViewModel.class);
         final ProductPresenter productPresenter = viewModel.getPresenter();
         productPresenter.setView(this);
-
-        // Extract the correct component type
-        String[] split = type.split("\\s+");
-        componentType = split[split.length-1].toUpperCase();
-        if (componentType.equals("DRIVE")) componentType="HARD_DRIVE";
 
         recyclerView = findViewById(R.id.choose_component_rv);
         recyclerView.setHasFixedSize(true);
@@ -84,10 +77,12 @@ public class ChooseComponentActivity extends AppCompatActivity
     @Override
     public void onItemSelected(Product item) {
         Component component = (Component) item;
-        viewModel.getPresenter().onComponentSelected(config, component, componentType);
         Intent intent = new Intent();
+        viewModel.getPresenter().onComponentSelected(config, component, componentType);
         intent.putExtra(UPDATED_PC_CONFIGURATION, config);
+        //intent.putExtra(SELECTED_COMPONENT_NAME, component.getName());
         setResult(RESULT_OK, intent);
         finish();
     }
+
 }

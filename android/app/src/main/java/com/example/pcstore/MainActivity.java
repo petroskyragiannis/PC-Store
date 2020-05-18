@@ -15,9 +15,13 @@ import com.example.pcstore.model.Client;
 import com.example.pcstore.model.Employee;
 import com.example.pcstore.model.User;
 
+import static com.example.pcstore.RegisterActivity.REGISTERED_CLIENT_PASSWORD;
+import static com.example.pcstore.RegisterActivity.REGISTERED_CLIENT_USERNAME;
+
 
 public class MainActivity extends AppCompatActivity implements RegisterView {
 
+    private static final int REQUEST_CODE_REGISTERED_CLIENT = 1;
     public static final String SIGNED_IN_CLIENT = "client";
 
     EditText edtUsername;
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements RegisterView {
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startRegisterActivity();
+                registerUser();
             }
         });
 
@@ -87,9 +91,10 @@ public class MainActivity extends AppCompatActivity implements RegisterView {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-    public void startRegisterActivity() {
+    public void registerUser() {
         Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE_REGISTERED_CLIENT);
+
     }
 
     public void showCatalog(Client client) {
@@ -98,4 +103,13 @@ public class MainActivity extends AppCompatActivity implements RegisterView {
         startActivity(intent);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_REGISTERED_CLIENT) {
+            if (resultCode == RESULT_OK)
+                edtUsername.setText(data.getStringExtra(REGISTERED_CLIENT_USERNAME));
+                edtPassword.setText(data.getStringExtra(REGISTERED_CLIENT_PASSWORD));
+        }
+    }
 }

@@ -40,81 +40,63 @@ public class ProductPresenter {
         view.showStatus(product.getName() + " added to cart.");
     }
 
-    public void onComponentSelected(PcConfiguration configuration, Component component, String componentType) {
-
+    public boolean onComponentSelected(PcConfiguration configuration, Component component, String componentType) {
+        boolean flag = false;
         Hardware hardwareType = Hardware.valueOf(componentType);
 
         if (hardwareType == Hardware.CASE) {
             configuration.setPcCase(component);
-            if (configuration.getPcCase()== null)
-                view.showStatus("Could not add this case.");
-            else
-                view.showStatus("Case added successfully.");
+            if (configuration.getPcCase() != null)
+                flag=true;
         }
         else if (hardwareType == Hardware.CPU) {
             configuration.setCpu(component);
-            if (configuration.getCpu()== null)
-                view.showStatus("Could not add this cpu.");
-            else
-                view.showStatus("Cpu added successfully.");
+            if (configuration.getCpu() != null)
+                flag=true;
         }
         else if (hardwareType == Hardware.MOTHERBOARD) {
             configuration.setMotherboard(component);
-            if (configuration.getMotherboard()== null)
-                view.showStatus("Could not add this motherboard.");
-            else
-                view.showStatus("Motherboard added successfully.");
+            if (configuration.getMotherboard() != null)
+                flag=true;
         }
         else if (hardwareType == Hardware.RAM) {
             configuration.setRam(component);
-            if (configuration.getRam()== null)
-                view.showStatus("Could not add this ram.");
-            else
-                view.showStatus("Ram added successfully.");
+            if (configuration.getRam() != null)
+                flag=true;
         }
         else if (hardwareType == Hardware.GPU) {
             configuration.setGpu(component);
-            if (configuration.getGpu()== null)
-                view.showStatus("Could not add this gpu.");
-            else
-                view.showStatus("Gpu added successfully.");
+            if (configuration.getGpu()!= null)
+                flag=true;
         }
         else if (hardwareType == Hardware.HARD_DRIVE) {
             configuration.setHardDrive(component);
-            if (configuration.getHardDrive()== null)
-                view.showStatus("Could not add this hard drive.");
-            else
-                view.showStatus("Hard drive added successfully.");
+            if (configuration.getHardDrive() != null)
+                flag=true;
         }
         else if (hardwareType == Hardware.PSU) {
             configuration.setPsu(component);
-            if (configuration.getPsu()== null)
-                view.showStatus("Could not add this psu.");
-            else
-                view.showStatus("Psu added successfully.");
+            if (configuration.getPsu() != null)
+                flag=true;
         }
         else if (hardwareType == Hardware.MOUSE) {
             configuration.setMouse(component);
-            if (configuration.getMouse()== null)
-                view.showStatus("Could not add this mouse.");
-            else
-                view.showStatus("Mouse added successfully.");
+            if (configuration.getMouse() != null)
+                flag=true;
         }
         else if (hardwareType == Hardware.KEYBOARD) {
             configuration.setKeyboard(component);
-            if (configuration.getKeyboard()== null)
-                view.showStatus("Could not add this keyboard.");
-            else
-                view.showStatus("Keyboard added successfully.");
+            if (configuration.getKeyboard()!= null)
+                flag=true;
         }
         else if (hardwareType == Hardware.MONITOR) {
             configuration.setMonitor(component);
-            if (configuration.getMonitor()== null)
-                view.showStatus("Could not add this monitor.");
-            else
-                view.showStatus("Monitor added successfully.");
+            if (configuration.getMonitor()!= null)
+                flag=true;
         }
-        else view.showStatus("Wrong component type.");
+        if (flag) view.showStatus(component.getName() + " added successfully.");
+        else view.showStatus("Could not add " + component.getName() + ".");
+        return flag;
     }
 
     public void setView(CatalogView view) {
@@ -128,4 +110,5 @@ public class ProductPresenter {
     public void setProductDAO(ProductDAO productDAO) {
         this.productDAO = productDAO;
     }
+
 }

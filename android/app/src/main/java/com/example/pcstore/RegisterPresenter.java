@@ -12,19 +12,20 @@ public class RegisterPresenter {
 
     public RegisterPresenter() {}
 
-    public void register(String username, String password) {
+    public Client register(String username, String password) {
         User user = userDAO.find(username);
         if (user!=null) {
             view.showStatus("A user already exists with this username.");
-            return;
+            return null;
         }
         if (password.length()<8) {
             view.showStatus("Password must be at least 8 characters.");
-            return;
+            return null;
         }
         Client client = new Client(username,password);
         userDAO.save(client);
         view.showStatus(username+" registered successfully.");
+        return client;
     }
 
     public User login(String username, String password) {

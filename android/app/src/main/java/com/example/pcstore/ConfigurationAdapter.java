@@ -16,14 +16,16 @@ public class ConfigurationAdapter extends RecyclerView.Adapter<ConfigurationAdap
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public ViewGroup listItem;
-        public TextView txtCategory;
-        public ImageButton btnSelectCategory;
+        public TextView txtType;
+        public TextView txtComponent;
+        public ImageButton btnSelectType;
 
         public ViewHolder(ViewGroup v) {
             super(v);
             listItem = v;
-            txtCategory = listItem.findViewById(R.id.txt_type);
-            btnSelectCategory = listItem.findViewById(R.id.btn_select_category);
+            txtType = listItem.findViewById(R.id.txt_type);
+            txtComponent = listItem.findViewById(R.id.txt_component);
+            btnSelectType = listItem.findViewById(R.id.btn_select_type);
         }
     }
 
@@ -47,13 +49,13 @@ public class ConfigurationAdapter extends RecyclerView.Adapter<ConfigurationAdap
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final String itemAtPosition = items[position];
-
-        holder.txtCategory.setText(itemAtPosition);
-        holder.btnSelectCategory.setOnClickListener(new View.OnClickListener() {
+        holder.txtType.setText(itemAtPosition);
+        holder.btnSelectType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void  onClick(View v) {
                 if (itemSelectionListener != null)
                     itemSelectionListener.onItemSelected(itemAtPosition);
+                    //holder.txtComponent.setText(itemAtPosition);
             }
         });
     }
@@ -62,4 +64,5 @@ public class ConfigurationAdapter extends RecyclerView.Adapter<ConfigurationAdap
     public int getItemCount() {
         return items.length;
     }
+
 }

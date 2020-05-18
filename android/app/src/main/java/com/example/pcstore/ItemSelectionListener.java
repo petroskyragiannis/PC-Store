@@ -1,7 +1,5 @@
 package com.example.pcstore;
 
-import com.example.pcstore.model.Client;
-
 /**
  * This interface should be implemented by the Activity that hosts the RecyclerView
  * in order to be notified of item selection
