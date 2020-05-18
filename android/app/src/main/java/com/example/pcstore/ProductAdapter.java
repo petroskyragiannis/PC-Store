@@ -13,19 +13,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     private List<Product> itemList;
     // A reference to a listener for book selection events.
-    private  ItemSelectionListener<Product> itemSelectionListener;
+    private  ProductSelectionListener<Product> productSelectionListener;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public ViewGroup listItem;
         public TextView txtProductName;
         public ImageButton btnAddToCart;
+        public ImageButton btnAddToWishlist;
 
         public ViewHolder(ViewGroup v) {
             super(v);
             listItem = v;
             txtProductName = listItem.findViewById(R.id.txt_product_name);
             btnAddToCart = listItem.findViewById(R.id.btn_add_to_cart);
+            btnAddToWishlist = listItem.findViewById(R.id.btn_add_to_wishlist);
         }
     }
 
@@ -34,8 +36,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
 
-    public void  setItemSelectionListener(ItemSelectionListener<Product> itemSelectionListener) {
-        this.itemSelectionListener = itemSelectionListener;
+    public void  setProductSelectionListener(ProductSelectionListener<Product> productSelectionListener) {
+        this.productSelectionListener = productSelectionListener;
     }
 
     @Override
@@ -49,13 +51,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Product productAtPosition = itemList.get(position);
-
         holder.txtProductName.setText(productAtPosition.getName());
         holder.btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void  onClick(View v) {
-                if (itemSelectionListener != null)
-                    itemSelectionListener.onItemSelected(productAtPosition);
+                if (productSelectionListener != null)
+                    productSelectionListener.onProductSelectedCart(productAtPosition);
+            }
+        });
+        holder.btnAddToWishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void  onClick(View v) {
+                if (productSelectionListener != null)
+                    productSelectionListener.onProductSelectedWishlist(productAtPosition);
             }
         });
     }

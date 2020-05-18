@@ -15,29 +15,18 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/txt_product_name"
+            android:id="@+id/txt_component_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/product_name"
+            android:text="@string/select_component"
             android:textSize="20sp" />
 
-        <ImageButton
-            android:id="@+id/btn_add_to_cart"
+        <CheckBox
+            android:id="@+id/btn_select_component"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:contentDescription="@string/add_to_cart"
-            app:srcCompat="@android:drawable/ic_input_add" />
-
-        <ImageButton
-            android:id="@+id/btn_add_to_wishlist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:contentDescription="@string/add_to_wishlist"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
-
+            android:layout_weight="0" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

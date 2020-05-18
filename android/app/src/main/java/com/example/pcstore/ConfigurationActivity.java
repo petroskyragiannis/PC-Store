@@ -10,13 +10,15 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pcstore.model.Client;
 import com.example.pcstore.model.PcConfiguration;
 
-public class ConfigurationActivity extends AppCompatActivity implements ItemSelectionListener<String>, CatalogView {
+public class ConfigurationActivity extends AppCompatActivity
+        implements ItemSelectionListener<String>, ConfigurationView {
 
     public static final String COMPONENT_TYPE = "component type";
     public static final String PC_CONFIGURATION = "pc configuration";
@@ -24,11 +26,14 @@ public class ConfigurationActivity extends AppCompatActivity implements ItemSele
 
     Client client;
     PcConfiguration config;
+
     TextView txtPcConfig;
     Button btnConfirm;
     RecyclerView recyclerView;
     private ConfigurationAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
+    private ConfigurationViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,11 @@ public class ConfigurationActivity extends AppCompatActivity implements ItemSele
         Intent intent = getIntent();
         client = (Client) intent.getSerializableExtra(MainActivity.SIGNED_IN_CLIENT);
         config = new PcConfiguration();
+
+        viewModel = new ViewModelProvider(this).get(ConfigurationViewModel.class);
+        final ComponentPresenter presenter = viewModel.getPresenter();
+        presenter.setView(this);
+
         String[] categories = new String[]{
                 "Select a Case",
                 "Select a CPU",
@@ -69,11 +79,8 @@ public class ConfigurationActivity extends AppCompatActivity implements ItemSele
             public void onClick(View v) {
                 try {
                     if (config.checkRequirements())
-                        if (config.checkCompatibility()) {
-                            client.addToCart(config);
-                            showStatus("Custom PC Configuration added to cart.");
-                            finish();
-                        }
+                        if (config.checkCompatibility())
+                            presenter.returnPcConfiguration(config);
                 } catch (PcConfiguration.CompatibilityException e) {
                     showStatus(e.getMessage());
                 }
@@ -85,11 +92,6 @@ public class ConfigurationActivity extends AppCompatActivity implements ItemSele
     protected void onPause() {
         super.onPause();
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mAdapter.notifyDataSetChanged();
-    }
 
     @Override
     public void onItemSelected(String item) {
@@ -98,11 +100,19 @@ public class ConfigurationActivity extends AppCompatActivity implements ItemSele
         String type = split[split.length - 1].toUpperCase();
         if (type.equals("DRIVE")) type = "HARD_DRIVE";
 
-        Intent intent = new Intent(this, ChooseComponentActivity.class);
+        Intent intent = new Intent(this, ComponentActivity.class);
         intent.putExtra(MainActivity.SIGNED_IN_CLIENT, client);
         intent.putExtra(PC_CONFIGURATION, config);
         intent.putExtra(COMPONENT_TYPE, type);
         startActivityForResult(intent, REQUEST_CODE_CHOOSE_COMPONENT);
+    }
+
+    @Override
+    public void returnPcConfiguration(PcConfiguration pcConfiguration) {
+        Intent intent = new Intent();
+        intent.putExtra(PC_CONFIGURATION, pcConfiguration);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     @Override
@@ -115,8 +125,8 @@ public class ConfigurationActivity extends AppCompatActivity implements ItemSele
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_CHOOSE_COMPONENT)
             if (resultCode == RESULT_OK)
-                config = (PcConfiguration) data.getSerializableExtra(ChooseComponentActivity.UPDATED_PC_CONFIGURATION);
-                //String componentName = data.getStringExtra(ChooseComponentActivity.SELECTED_COMPONENT_NAME);
+                config = (PcConfiguration) data.getSerializableExtra(ComponentActivity.UPDATED_PC_CONFIGURATION);
+                //String componentName = data.getStringExtra(ComponentActivity.SELECTED_COMPONENT_NAME);
     }
 
 }

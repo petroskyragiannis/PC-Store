@@ -28,8 +28,6 @@ public class Client extends User {
 
     // Cart Methods
     public void addToCart(Product product, int quantity){
-        if (quantity > product.getStock())
-            return;
         if (cart.size() != 0) {
             for (OrderLine o : cart) {
                 if (o instanceof SimpleOrderLine) {
@@ -46,7 +44,7 @@ public class Client extends User {
     }
 
     public void addToCart(PcConfiguration config) {
-        if (config!=null) cart.add(config);
+        cart.add(config);
     }
 
     public void removeFromCart(Product product, int quantity) {

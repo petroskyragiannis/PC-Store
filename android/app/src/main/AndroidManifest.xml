@@ -21,7 +21,9 @@
         </activity>
         <activity android:name="com.example.pcstore.ConfigurationActivity">
         </activity>
-        <activity android:name="com.example.pcstore.ChooseComponentActivity">
+        <activity android:name="com.example.pcstore.ComponentActivity">
+        </activity>
+        <activity android:name="com.example.pcstore.CartActivity">
         </activity>
     </application>
 
