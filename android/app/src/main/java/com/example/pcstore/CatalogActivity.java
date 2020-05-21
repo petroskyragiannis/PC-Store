@@ -16,23 +16,26 @@ import com.example.pcstore.model.PcConfiguration;
 import com.example.pcstore.model.Product;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 public class CatalogActivity extends AppCompatActivity
-        implements ProductSelectionListener<Product>, CatalogView {
+        implements CatalogSelectionListener<Product>, CatalogView {
 
     public static final String CLIENT_CART = "client cart";
+    public static final String CLIENT_WISHLIST = "client wishlist";
+    public static final String SINGED_OUT_CLIENT = "singed out client";
     public static final int REQUEST_CODE_PC_CONFIGURATION = 1;
+    public static final int REQUEST_CODE_WISHLIST = 2;
 
     Client client;
-
     TextView txtConfiguration;
     ImageButton btnConfiguration;
     Button btnViewCart;
+    Button btnViewWishlist;
     RecyclerView recyclerView;
-    private ProductAdapter mAdapter;
+    private CatalogAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
-    private ProductViewModel viewModel;
+    private CatalogViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +45,15 @@ public class CatalogActivity extends AppCompatActivity
         txtConfiguration = findViewById(R.id.txt_configuration);
         btnConfiguration = findViewById(R.id.btn_configuration);
         btnViewCart = findViewById(R.id.btn_view_cart);
+        btnViewWishlist = findViewById(R.id.btn_view_wishlist);
 
         Intent intent = getIntent();
         client = (Client) intent.getSerializableExtra(MainActivity.SIGNED_IN_CLIENT);
 
-        viewModel = new ViewModelProvider(this).get(ProductViewModel.class);
-        final ProductPresenter productPresenter = viewModel.getPresenter();
-        productPresenter.setView(this);
-        List<Product> catalog = productPresenter.getCatalog();
+        viewModel = new ViewModelProvider(this).get(CatalogViewModel.class);
+        final CatalogPresenter catalogPresenter = viewModel.getPresenter();
+        catalogPresenter.setView(this);
+        List<Product> catalog = catalogPresenter.getCatalog();
 
         recyclerView = findViewById(R.id.catalog_rv);
         recyclerView.setHasFixedSize(true);
@@ -57,10 +61,10 @@ public class CatalogActivity extends AppCompatActivity
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         // Specify an adapter
-        mAdapter = new ProductAdapter(catalog);
+        mAdapter = new CatalogAdapter(catalog);
         recyclerView.setAdapter(mAdapter);
         // Register current activity as listener for product selection events
-        mAdapter.setProductSelectionListener(this);
+        mAdapter.setCatalogSelectionListener(this);
 
         btnConfiguration.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -73,11 +77,26 @@ public class CatalogActivity extends AppCompatActivity
                 previewCart();
             }
         });
+
+        btnViewWishlist.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                previewWishlist();
+            }
+        });
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+    }
+
+    @Override
+    public void onBackPressed() {
+        //TODO use presenter
+        Intent intent = new Intent();
+        intent.putExtra(SINGED_OUT_CLIENT, client);
+        setResult(RESULT_OK, intent);
+        super.onBackPressed();
     }
 
     @Override
@@ -108,6 +127,13 @@ public class CatalogActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    public void previewWishlist() {
+        Intent intent = new Intent(this, WishlistActivity.class);
+        intent.putExtra(MainActivity.SIGNED_IN_CLIENT, client);
+        intent.putExtra(CLIENT_WISHLIST, (Serializable) client.getWishlist());
+        startActivityForResult(intent, REQUEST_CODE_WISHLIST);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -115,6 +141,11 @@ public class CatalogActivity extends AppCompatActivity
             if (resultCode == RESULT_OK) {
                 PcConfiguration config = (PcConfiguration) data.getSerializableExtra(ConfigurationActivity.PC_CONFIGURATION);
                 viewModel.getPresenter().onPcConfigurationSelected(client, config);
+            }
+        } else if (requestCode == REQUEST_CODE_WISHLIST) {
+            if (resultCode == RESULT_OK) {
+                Set<Product> wishlist = (Set<Product>) data.getSerializableExtra(WishlistActivity.UPDATED_WISHLIST);
+                viewModel.getPresenter().updateWishlist(client, wishlist);
             }
         }
     }

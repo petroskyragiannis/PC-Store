@@ -87,7 +87,7 @@ public class Client extends User {
 
     //Wishlist Methods
     public void addToWishlist(Product p) {
-        wishlist.add(p);
+        if (!wishlist.contains(p)) wishlist.add(p);
     }
 
     public void removeFromWishlist(Product p) {

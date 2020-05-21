@@ -3,22 +3,23 @@ package com.example.pcstore;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.pcstore.model.Client;
+import com.example.pcstore.model.Component;
 import com.example.pcstore.model.PcConfiguration;
+import java.io.Serializable;
 
 public class ConfigurationActivity extends AppCompatActivity
-        implements ItemSelectionListener<String>, ConfigurationView {
+        implements TypeSelectionListener, ConfigurationView {
 
     public static final String COMPONENT_TYPE = "component type";
     public static final String PC_CONFIGURATION = "pc configuration";
@@ -26,14 +27,13 @@ public class ConfigurationActivity extends AppCompatActivity
 
     Client client;
     PcConfiguration config;
-
     TextView txtPcConfig;
     Button btnConfirm;
     RecyclerView recyclerView;
     private ConfigurationAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
     private ConfigurationViewModel viewModel;
+    TextView txtType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class ConfigurationActivity extends AppCompatActivity
         config = new PcConfiguration();
 
         viewModel = new ViewModelProvider(this).get(ConfigurationViewModel.class);
-        final ComponentPresenter presenter = viewModel.getPresenter();
+        final ConfigurationPresenter presenter = viewModel.getPresenter();
         presenter.setView(this);
 
         String[] categories = new String[]{
@@ -72,7 +72,7 @@ public class ConfigurationActivity extends AppCompatActivity
         mAdapter = new ConfigurationAdapter(categories);
         recyclerView.setAdapter(mAdapter);
         // Register current activity as listener for product selection events
-        mAdapter.setItemSelectionListener(this);
+        mAdapter.setTypeSelectionListener(this);
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -94,7 +94,12 @@ public class ConfigurationActivity extends AppCompatActivity
     }
 
     @Override
-    public void onItemSelected(String item) {
+    protected void onResume() {
+        super.onResume();
+
+    }
+    @Override
+    public void onTypeSelected(String item, TextView textView) {
         // Extract the correct component type
         String[] split = item.split("\\s+");
         String type = split[split.length - 1].toUpperCase();
@@ -104,8 +109,10 @@ public class ConfigurationActivity extends AppCompatActivity
         intent.putExtra(MainActivity.SIGNED_IN_CLIENT, client);
         intent.putExtra(PC_CONFIGURATION, config);
         intent.putExtra(COMPONENT_TYPE, type);
+        txtType = textView;
         startActivityForResult(intent, REQUEST_CODE_CHOOSE_COMPONENT);
     }
+
 
     @Override
     public void returnPcConfiguration(PcConfiguration pcConfiguration) {
@@ -126,7 +133,7 @@ public class ConfigurationActivity extends AppCompatActivity
         if (requestCode == REQUEST_CODE_CHOOSE_COMPONENT)
             if (resultCode == RESULT_OK)
                 config = (PcConfiguration) data.getSerializableExtra(ComponentActivity.UPDATED_PC_CONFIGURATION);
-                //String componentName = data.getStringExtra(ComponentActivity.SELECTED_COMPONENT_NAME);
+                txtType.setText(data.getStringExtra(ComponentActivity.SELECTED_COMPONENT_NAME));
     }
 
 }

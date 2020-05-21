@@ -21,8 +21,9 @@ import static com.example.pcstore.RegisterActivity.REGISTERED_CLIENT_USERNAME;
 
 public class MainActivity extends AppCompatActivity implements RegisterView {
 
-    private static final int REQUEST_CODE_REGISTERED_CLIENT = 1;
     public static final String SIGNED_IN_CLIENT = "client";
+    private static final int REQUEST_CODE_REGISTERED_CLIENT = 1;
+    private static final int REQUEST_CODE_SIGNED_OUT_CLIENT = 2;
 
     EditText edtUsername;
     EditText edtPassword;
@@ -100,16 +101,23 @@ public class MainActivity extends AppCompatActivity implements RegisterView {
     public void showCatalog(Client client) {
         Intent intent = new Intent(this, CatalogActivity.class);
         intent.putExtra(SIGNED_IN_CLIENT, client);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE_SIGNED_OUT_CLIENT);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_REGISTERED_CLIENT) {
-            if (resultCode == RESULT_OK)
+            if (resultCode == RESULT_OK) {
                 edtUsername.setText(data.getStringExtra(REGISTERED_CLIENT_USERNAME));
                 edtPassword.setText(data.getStringExtra(REGISTERED_CLIENT_PASSWORD));
+            }
+        } else if (requestCode == REQUEST_CODE_SIGNED_OUT_CLIENT) {
+            if (resultCode == RESULT_OK) {
+                Client singedOutClient = (Client) data.getSerializableExtra(CatalogActivity.SINGED_OUT_CLIENT);
+                viewModel.getPresenter().logout(singedOutClient);
+            }
         }
     }
+
 }

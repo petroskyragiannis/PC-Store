@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,15 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.pcstore.model.Client;
 import com.example.pcstore.model.Component;
 import com.example.pcstore.model.PcConfiguration;
-
 import java.util.List;
 
-
 public class ComponentActivity extends AppCompatActivity
-        implements ItemSelectionListener<Component>, ConfigurationView {
+        implements ItemSelectionListener<Component>, ComponentView {
 
     public static final String UPDATED_PC_CONFIGURATION = "updated config";
-    //public static final String SELECTED_COMPONENT_NAME = "selected component name";
+    public static final String SELECTED_COMPONENT_NAME = "selected component name";
 
     Client client;
     PcConfiguration config;
@@ -31,7 +28,7 @@ public class ComponentActivity extends AppCompatActivity
     private ComponentAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    private ConfigurationViewModel viewModel;
+    private ComponentViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +42,7 @@ public class ComponentActivity extends AppCompatActivity
         componentType = intent.getStringExtra(ConfigurationActivity.COMPONENT_TYPE);
         txtSelectType.setText("Select a " + componentType);
 
-        viewModel = new ViewModelProvider(this).get(ConfigurationViewModel.class);
+        viewModel = new ViewModelProvider(this).get(ComponentViewModel.class);
         final ComponentPresenter presenter = viewModel.getPresenter();
         presenter.setView(this);
 
@@ -69,10 +66,10 @@ public class ComponentActivity extends AppCompatActivity
     }
 
     @Override
-    public void returnPcConfiguration(PcConfiguration pcConfiguration) {
+    public void returnPcConfiguration(PcConfiguration pcConfiguration, Component component) {
         Intent intent = new Intent();
         intent.putExtra(UPDATED_PC_CONFIGURATION, config);
-        //intent.putExtra(SELECTED_COMPONENT_NAME, component.getName());
+        intent.putExtra(SELECTED_COMPONENT_NAME, component.getName());
         setResult(RESULT_OK, intent);
         finish();
     }
@@ -85,7 +82,7 @@ public class ComponentActivity extends AppCompatActivity
     @Override
     public void onItemSelected(Component item) {
         viewModel.getPresenter().onComponentSelected(config, item, componentType);
-        viewModel.getPresenter().returnPcConfiguration(config);
+        viewModel.getPresenter().returnPcConfiguration(config, item);
     }
 
 }

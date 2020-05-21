@@ -49,7 +49,6 @@ public class ComponentAdapter extends RecyclerView.Adapter<ComponentAdapter.View
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final Component componentAtPosition = itemList.get(position);
-
         holder.txtComponentName.setText(componentAtPosition.getName());
         holder.btnSelectComponent.setOnClickListener(new View.OnClickListener() {
             @Override

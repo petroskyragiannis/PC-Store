@@ -3,12 +3,9 @@ package com.example.pcstore;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.pcstore.model.Client;
 import com.example.pcstore.model.OrderLine;
-
 import java.util.Set;
 
 import static com.example.pcstore.CatalogActivity.CLIENT_CART;

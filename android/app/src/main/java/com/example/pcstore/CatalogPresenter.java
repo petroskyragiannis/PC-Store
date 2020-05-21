@@ -5,13 +5,14 @@ import com.example.pcstore.model.Client;
 import com.example.pcstore.model.PcConfiguration;
 import com.example.pcstore.model.Product;
 import java.util.List;
+import java.util.Set;
 
-public class ProductPresenter {
+public class CatalogPresenter {
 
     private CatalogView view;
     private ProductDAO productDAO;
 
-    public ProductPresenter() {}
+    public CatalogPresenter() {}
 
     public List<Product> getCatalog() {
         return productDAO.findAll();
@@ -23,13 +24,22 @@ public class ProductPresenter {
     }
 
     public void onProductSelectedWishlist(Client client, Product product) {
-        client.addToWishlist(product);
-        view.showStatus(product.getName() + " added to wishlist.");
+        if (client.getWishlist().contains(product))
+            view.showStatus(product.getName() + " is already in your wishlist.");
+        else {
+            client.addToWishlist(product);
+            view.showStatus(product.getName() + " added to wishlist.");
+        }
     }
 
     public void onPcConfigurationSelected(Client client, PcConfiguration pcConfiguration) {
         client.addToCart(pcConfiguration);
+
         view.showStatus("Custom PC Configuration added to cart.");
+    }
+
+    public void updateWishlist(Client client, Set<Product> wishlist) {
+        client.setWishlist(wishlist);
     }
 
     public void setView(CatalogView view) {

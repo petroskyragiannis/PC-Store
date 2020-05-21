@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/txt_product_name"
-            android:layout_width="wrap_content"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/product_name"
@@ -24,7 +24,7 @@
 
         <ImageButton
             android:id="@+id/btn_add_to_cart"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:contentDescription="@string/add_to_cart"
@@ -32,7 +32,7 @@
 
         <ImageButton
             android:id="@+id/btn_add_to_wishlist"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:contentDescription="@string/add_to_wishlist"

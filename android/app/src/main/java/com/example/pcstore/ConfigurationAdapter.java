@@ -11,20 +11,18 @@ public class ConfigurationAdapter extends RecyclerView.Adapter<ConfigurationAdap
 
     private String[] items;
     // A reference to a listener for book selection events.
-    private  ItemSelectionListener<String> itemSelectionListener;
+    private  TypeSelectionListener typeSelectionListener;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public ViewGroup listItem;
         public TextView txtType;
-        public TextView txtComponent;
         public ImageButton btnSelectType;
 
         public ViewHolder(ViewGroup v) {
             super(v);
             listItem = v;
             txtType = listItem.findViewById(R.id.txt_type);
-            txtComponent = listItem.findViewById(R.id.txt_component);
             btnSelectType = listItem.findViewById(R.id.btn_select_type);
         }
     }
@@ -34,8 +32,8 @@ public class ConfigurationAdapter extends RecyclerView.Adapter<ConfigurationAdap
     }
 
 
-    public void  setItemSelectionListener(ItemSelectionListener<String> itemSelectionListener) {
-        this.itemSelectionListener = itemSelectionListener;
+    public void  setTypeSelectionListener(TypeSelectionListener typeSelectionListener) {
+        this.typeSelectionListener = typeSelectionListener;
     }
 
     @Override
@@ -47,15 +45,14 @@ public class ConfigurationAdapter extends RecyclerView.Adapter<ConfigurationAdap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final String itemAtPosition = items[position];
         holder.txtType.setText(itemAtPosition);
         holder.btnSelectType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void  onClick(View v) {
-                if (itemSelectionListener != null)
-                    itemSelectionListener.onItemSelected(itemAtPosition);
-                    //holder.txtComponent.setText(itemAtPosition);
+                if (typeSelectionListener != null)
+                    typeSelectionListener.onTypeSelected(itemAtPosition, holder.txtType);
             }
         });
     }

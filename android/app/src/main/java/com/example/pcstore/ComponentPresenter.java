@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ComponentPresenter {
 
-    private ConfigurationView view;
+    private ComponentView view;
     private ProductDAO productDAO;
 
     public ComponentPresenter() {}
@@ -89,11 +89,12 @@ public class ComponentPresenter {
         return flag;
     }
 
-    public void returnPcConfiguration(PcConfiguration pcConfiguration) {
-        view.returnPcConfiguration(pcConfiguration);
+
+    public void returnPcConfiguration(PcConfiguration pcConfiguration, Component component) {
+        view.returnPcConfiguration(pcConfiguration, component);
     }
 
-    public void setView(ConfigurationView view) {
+    public void setView(ComponentView view) {
         this.view = view;
     }
 

@@ -2,16 +2,16 @@ package com.example.pcstore;
 
 import androidx.lifecycle.ViewModel;
 
-public class ConfigurationViewModel extends ViewModel {
+public class WishlistViewModel extends ViewModel {
 
-    ConfigurationPresenter presenter;
+    WishlistPresenter presenter;
 
-    public ConfigurationViewModel() {
+    public WishlistViewModel() {
         super();
-        presenter = new ConfigurationPresenter();
+        presenter = new WishlistPresenter();
     }
 
-    public ConfigurationPresenter getPresenter() {
+    public WishlistPresenter getPresenter() {
         return presenter;
     }
 
@@ -20,5 +20,4 @@ public class ConfigurationViewModel extends ViewModel {
         super.onCleared();
         presenter.clearView();
     }
-
 }

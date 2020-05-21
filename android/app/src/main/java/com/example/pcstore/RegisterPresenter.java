@@ -51,6 +51,13 @@ public class RegisterPresenter {
         return new Client("guest", "guest");
     }
 
+    public void logout(Client client) {
+        if (client.getUsername() != "guest") {
+            userDAO.delete(client);
+            userDAO.save(client);
+        }
+    }
+
     public void setView(RegisterView view) {
         this.view = view;
     }
