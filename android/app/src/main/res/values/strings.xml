@@ -41,4 +41,13 @@
     <string name="_15">15</string>
     <string name="kifisia">Kifisia</string>
     <string name="_14561">14561</string>
+    <string name="card_info">card_info</string>
+    <string name="_000">000</string>
+    <string name="cardholdername">CardHolderName</string>
+    <string name="_0000">0000</string>
+    <string name="_1_1_21">1/1/21</string>
+    <string name="petros_kyragiannis">Petros Kyragiannis</string>
+    <string name="cardnumber">CardNumber</string>
+    <string name="expirationdate">ExpirationDate</string>
+    <string name="csv">Csv</string>
 </resources>
