@@ -7,137 +7,149 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/street_tv"
-        android:layout_width="86dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/street"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressInfo_tv" />
-
-    <TextView
-        android:id="@+id/number_tv"
-        android:layout_width="98dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/number"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/street_tv" />
-
-    <TextView
-        android:id="@+id/town_tv"
-        android:layout_width="81dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/town"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/number_tv" />
-
-    <TextView
-        android:id="@+id/zipcode_tv"
-        android:layout_width="113dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/zipcode"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/town_tv" />
-
-    <TextView
-        android:id="@+id/addressInfo_tv"
-        android:layout_width="158dp"
-        android:layout_height="32dp"
+        android:id="@+id/txt_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:text="@string/adderss_info"
+        android:text="@string/address"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/ok_btn"
+    <TextView
+        android:id="@+id/txt_street"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="110dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
+        android:text="@string/street"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toStartOf="@+id/edt_street"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_address" />
+
+    <EditText
+        android:id="@+id/edt_street"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/thiseos"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_address" />
+
+    <TextView
+        android:id="@+id/txt_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/number"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toStartOf="@+id/edt_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_street" />
+
+    <EditText
+        android:id="@+id/edt_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/_15"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_street" />
+
+    <TextView
+        android:id="@+id/txt_town"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/town"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toStartOf="@+id/edt_town"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_number" />
+
+    <EditText
+        android:id="@+id/edt_town"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/kifisia"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_number" />
+
+    <TextView
+        android:id="@+id/txt_zipcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/zipcode"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toStartOf="@+id/edt_zipcode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_town" />
+
+    <EditText
+        android:id="@+id/edt_zipcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/_14561"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_town" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
         android:text="@android:string/ok"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zipcode_tv" />
-
-    <EditText
-        android:id="@+id/street_edt2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="@string/street"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/street_tv"
-        app:layout_constraintTop_toBottomOf="@+id/addressInfo_tv"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/number_edt2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="@string/number"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/number_tv"
-        app:layout_constraintTop_toBottomOf="@+id/street_edt2"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/zipcode_edt2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="@string/zipcode"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/zipcode_tv"
-        app:layout_constraintTop_toBottomOf="@+id/town_edt2"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/town_edt2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="@string/town"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/town_tv"
-        app:layout_constraintTop_toBottomOf="@+id/number_edt2"
-        android:autofillHints="" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

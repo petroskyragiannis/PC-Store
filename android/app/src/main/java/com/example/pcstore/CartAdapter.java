@@ -7,8 +7,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.pcstore.model.Component;
 import com.example.pcstore.model.OrderLine;
 import com.example.pcstore.model.PcConfiguration;
 import com.example.pcstore.model.SimpleOrderLine;

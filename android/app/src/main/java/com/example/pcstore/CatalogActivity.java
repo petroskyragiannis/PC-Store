@@ -15,15 +15,12 @@ import com.example.pcstore.model.Client;
 import com.example.pcstore.model.OrderLine;
 import com.example.pcstore.model.PcConfiguration;
 import com.example.pcstore.model.Product;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
 public class CatalogActivity extends AppCompatActivity
         implements CatalogSelectionListener<Product>, CatalogView {
 
-    public static final String CLIENT_CART = "client cart";
-    public static final String CLIENT_WISHLIST = "client wishlist";
     public static final String SINGED_OUT_CLIENT = "singed out client";
     public static final int REQUEST_CODE_PC_CONFIGURATION = 1;
     public static final int REQUEST_CODE_WISHLIST = 2;

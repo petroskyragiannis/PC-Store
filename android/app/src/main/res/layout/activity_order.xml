@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_card_info" />
 
     <Spinner
-        android:id="@+id/sp_payment"
+        android:id="@+id/spin_payment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_create_order" />
 
     <Spinner
-        android:id="@+id/sp_delivery"
+        android:id="@+id/spin_delivery"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -91,7 +91,7 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_payment" />
+        app:layout_constraintTop_toBottomOf="@+id/spin_payment" />
 
     <Button
         android:id="@+id/btn_address"
@@ -106,7 +106,7 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_delivery" />
+        app:layout_constraintTop_toBottomOf="@+id/spin_delivery" />
 
     <Button
         android:id="@+id/btn_complete_order"
