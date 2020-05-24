@@ -32,4 +32,9 @@
     <string name="fill_your_address_information">fill your address information</string>
     <string name="fill_your_card_information">fill your card information</string>
     <string name="complete_order">complete order</string>
+    <string name="street">Street :</string>
+    <string name="number">Number :</string>
+    <string name="town">Town :</string>
+    <string name="zipcode">Zipcode :</string>
+    <string name="adderss_info">Adderss Info</string>
 </resources>
