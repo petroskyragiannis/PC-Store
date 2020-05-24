@@ -30,10 +30,9 @@ public class ComponentPresenter {
         return components;
     }
 
-    public boolean onComponentSelected(PcConfiguration configuration, Component component, String componentType) {
+    public void onComponentSelected(PcConfiguration configuration, Component component, String componentType) {
         boolean flag = false;
         Hardware hardwareType = Hardware.valueOf(componentType);
-
         if (hardwareType == Hardware.CASE) {
             configuration.setPcCase(component);
             if (configuration.getPcCase() != null)
@@ -84,9 +83,7 @@ public class ComponentPresenter {
             if (configuration.getMonitor()!= null)
                 flag=true;
         }
-        if (flag) view.showStatus(component.getName() + " added successfully.");
-        else view.showStatus("Could not add " + component.getName() + ".");
-        return flag;
+        if (!flag) view.showStatus("Could not add " + component.getName() + ".");
     }
 
 

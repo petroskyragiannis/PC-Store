@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.pcstore.model.Client;
+import com.example.pcstore.model.OrderLine;
 import com.example.pcstore.model.PcConfiguration;
 import com.example.pcstore.model.Product;
 import java.io.Serializable;
@@ -26,6 +27,7 @@ public class CatalogActivity extends AppCompatActivity
     public static final String SINGED_OUT_CLIENT = "singed out client";
     public static final int REQUEST_CODE_PC_CONFIGURATION = 1;
     public static final int REQUEST_CODE_WISHLIST = 2;
+    public static final int REQUEST_CODE_CART = 3;
 
     Client client;
     TextView txtConfiguration;
@@ -123,14 +125,12 @@ public class CatalogActivity extends AppCompatActivity
     public void previewCart() {
         Intent intent = new Intent(this, CartActivity.class);
         intent.putExtra(MainActivity.SIGNED_IN_CLIENT, client);
-        intent.putExtra(CLIENT_CART, (Serializable) client.getCart());
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE_CART);
     }
 
     public void previewWishlist() {
         Intent intent = new Intent(this, WishlistActivity.class);
         intent.putExtra(MainActivity.SIGNED_IN_CLIENT, client);
-        intent.putExtra(CLIENT_WISHLIST, (Serializable) client.getWishlist());
         startActivityForResult(intent, REQUEST_CODE_WISHLIST);
     }
 
@@ -145,7 +145,12 @@ public class CatalogActivity extends AppCompatActivity
         } else if (requestCode == REQUEST_CODE_WISHLIST) {
             if (resultCode == RESULT_OK) {
                 Set<Product> wishlist = (Set<Product>) data.getSerializableExtra(WishlistActivity.UPDATED_WISHLIST);
-                viewModel.getPresenter().updateWishlist(client, wishlist);
+                viewModel.getPresenter().onWishlistSelected(client, wishlist);
+            }
+        } else if (requestCode == REQUEST_CODE_CART) {
+            if (resultCode == RESULT_OK) {
+                Set<OrderLine> cart = (Set<OrderLine>) data.getSerializableExtra(CartActivity.UPDATED_CART);
+                viewModel.getPresenter().onCartSelected(client, cart);
             }
         }
     }

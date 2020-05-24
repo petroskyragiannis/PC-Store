@@ -221,10 +221,10 @@ public abstract class Initializer {
             productDAO.save(component);
 
         SimpleOrderLineDAO simpleOrderLineDAO = getSimpleOrderLineDAO();
-        simpleOrderLineDAO.save(new SimpleOrderLine(productDAO.findByName("AOC 24G2U"),5));
-        simpleOrderLineDAO.save(new SimpleOrderLine(productDAO.findByName("Apple MacBook Pro 16"),1));
-        simpleOrderLineDAO.save(new SimpleOrderLine(productDAO.findByName("Western Digital Caviar Blue 1TB 7200RPM"),5));
-        simpleOrderLineDAO.save(new SimpleOrderLine(productDAO.findByName("Razer Deathadder V2"),1));
+        simpleOrderLineDAO.save(new SimpleOrderLine(productDAO.findByName("AOC 24G2U")));
+        simpleOrderLineDAO.save(new SimpleOrderLine(productDAO.findByName("Apple MacBook Pro 16")));
+        simpleOrderLineDAO.save(new SimpleOrderLine(productDAO.findByName("Western Digital Caviar Blue 1TB 7200RPM")));
+        simpleOrderLineDAO.save(new SimpleOrderLine(productDAO.findByName("Razer Deathadder V2")));
 
         PcConfigurationDAO pcConfigurationDAO =  getPcConfigurationDAO();
 
@@ -270,7 +270,7 @@ public abstract class Initializer {
                 new HashSet<OrderLine>(Arrays.asList(
                         simpleOrderLineDAO.find(productDAO.findByName("Western Digital Caviar Blue 1TB 7200RPM"), 5),
                         simpleOrderLineDAO.find(productDAO.findByName("Razer Deathadder V2"), 1))),
-                true, new GregorianCalendar(2020,4,10), Delivery.ADDRESS, Payment.BANK_TRANSFER));
+                true, new GregorianCalendar(2020,4,10), Delivery.ADDRESS, Payment.CARD));
     }
 
     public abstract ClientDAO getClientDAO();

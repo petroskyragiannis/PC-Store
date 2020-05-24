@@ -2,8 +2,11 @@ package com.example.pcstore;
 
 import com.example.pcstore.dao.ProductDAO;
 import com.example.pcstore.model.Client;
+import com.example.pcstore.model.OrderLine;
 import com.example.pcstore.model.PcConfiguration;
 import com.example.pcstore.model.Product;
+import com.example.pcstore.model.SimpleOrderLine;
+
 import java.util.List;
 import java.util.Set;
 
@@ -19,27 +22,27 @@ public class CatalogPresenter {
     }
 
     public void onProductSelectedCart(Client client, Product product) {
-        client.addToCart(product, 1);
+        SimpleOrderLine simpleOrderLine = new SimpleOrderLine(product);
+        client.addToCart(simpleOrderLine);
         view.showStatus(product.getName() + " added to cart.");
     }
 
     public void onProductSelectedWishlist(Client client, Product product) {
-        if (client.getWishlist().contains(product))
-            view.showStatus(product.getName() + " is already in your wishlist.");
-        else {
-            client.addToWishlist(product);
-            view.showStatus(product.getName() + " added to wishlist.");
-        }
+        client.addToWishlist(product);
+        view.showStatus(product.getName() + " added to wishlist.");
     }
 
     public void onPcConfigurationSelected(Client client, PcConfiguration pcConfiguration) {
         client.addToCart(pcConfiguration);
-
         view.showStatus("Custom PC Configuration added to cart.");
     }
 
-    public void updateWishlist(Client client, Set<Product> wishlist) {
+    public void onWishlistSelected(Client client, Set<Product> wishlist) {
         client.setWishlist(wishlist);
+    }
+
+    public void onCartSelected(Client client, Set<OrderLine> cart) {
+        client.setCart(cart);
     }
 
     public void setView(CatalogView view) {

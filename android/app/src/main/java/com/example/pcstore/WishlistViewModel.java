@@ -3,7 +3,6 @@ package com.example.pcstore;
 import androidx.lifecycle.ViewModel;
 
 public class WishlistViewModel extends ViewModel {
-
     WishlistPresenter presenter;
 
     public WishlistViewModel() {

@@ -1,14 +1,16 @@
 package com.example.pcstore.model;
 
-public class SimpleOrderLine extends OrderLine {
+import android.os.Build;
+import androidx.annotation.RequiresApi;
+import java.util.Objects;
 
+public class SimpleOrderLine extends OrderLine {
     private Product product;
-    private int quantity;
 
     // Constructors
-    public SimpleOrderLine(Product product, int quantity) {
+    public SimpleOrderLine(Product product) {
+        super(1);
         this.product = product;
-        this.quantity = quantity;
     }
 
     @Override
@@ -22,21 +24,22 @@ public class SimpleOrderLine extends OrderLine {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof SimpleOrderLine)) return false;
-
-        SimpleOrderLine that = (SimpleOrderLine) o;
-
-        if (quantity != that.quantity) return false;
-        return product.equals(that.product);
+    public int getStock() {
+        return product.getStock();
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SimpleOrderLine that = (SimpleOrderLine) o;
+        return product.equals(that.product);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
     public int hashCode() {
-        int result = product.hashCode();
-        result = 31 * result + quantity;
-        return result;
+        return Objects.hash(product);
     }
 
     // Getters and Setters
@@ -46,14 +49,6 @@ public class SimpleOrderLine extends OrderLine {
 
     public void setProduct(Product product) {
         this.product = product;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
 }

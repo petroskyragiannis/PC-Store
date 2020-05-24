@@ -34,11 +34,13 @@ public class PcConfiguration extends OrderLine {
 
     private Component[] components;
 
-
     // Constructor
-    public PcConfiguration() {}
+    public PcConfiguration() {
+        super(1);
+    }
 
     public PcConfiguration(Component pcCase, Component cpu, Component motherboard, Component ram, Component gpu, Component hardDrive, Component psu, Component mouse, Component keyboard, Component monitor) {
+        super(1);
         this.pcCase = pcCase;
         this.cpu = cpu;
         this.motherboard = motherboard;
@@ -124,7 +126,17 @@ public class PcConfiguration extends OrderLine {
     @Override
     public void updateStock() {
         for (Component c: components)
-            if (c!=null) c.setStock(c.getStock() - 1);
+            if (c!=null) c.setStock(c.getStock() - quantity);
+    }
+
+    @Override
+    public int getStock() {
+        int minStock = pcCase.getStock();
+        for (Component component: components) {
+            if (component.getStock() < minStock)
+                minStock = component.getStock();
+        }
+        return minStock;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

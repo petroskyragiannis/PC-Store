@@ -10,14 +10,19 @@ import java.util.Set;
 public class WishlistPresenter {
 
     private WishlistView view;
-    private List<Product> list = new ArrayList<>();
+    private List<Product> list;
 
-    public WishlistPresenter() { }
+    public WishlistPresenter() {
+        list = new ArrayList<>();
+    }
+
+    public void setupList(Set<Product> set) {
+        list.addAll(set);
+    }
 
     public void onItemSelected(Client client, Product product) {
         client.removeFromWishlist(product);
         list.remove(product);
-        view.showStatus(product.getName() + " removed from cart.");
     }
 
     public void returnWishlist() {
@@ -30,10 +35,6 @@ public class WishlistPresenter {
 
     public void setList(List<Product> list) {
         this.list = list;
-    }
-
-    public void setList(Set<Product> set) {
-        list.addAll(set);
     }
 
     public void setView(WishlistView view) {

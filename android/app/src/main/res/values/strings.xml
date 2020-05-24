@@ -23,4 +23,13 @@
     <string name="view_wishlist">View Wishlist</string>
     <string name="wishlist">Wishlist</string>
     <string name="remove_from_wishlist">Remove From Wishlist</string>
+    <string name="cart">Cart</string>
+    <string name="remove_from_cart">Remove From Cart</string>
+    <string name="quantity">Quantity</string>
+    <string name="create_order">Create Order</string>
+    <string name="payment_method">Payment Method:</string>
+    <string name="delivery_method">Delivery Method:</string>
+    <string name="fill_your_address_information">fill your address information</string>
+    <string name="fill_your_card_information">fill your card information</string>
+    <string name="complete_order">complete order</string>
 </resources>

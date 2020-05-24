@@ -1,10 +1,5 @@
 package com.example.pcstore.model;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,66 +7,45 @@ public class Client extends User {
 
     private Address address;
     private CardInfo card;
-    private Set<OrderLine> cart = new HashSet<>();
-    private Set<Product> wishlist = new HashSet<>();
+    private Set<OrderLine> cart;
+    private Set<Product> wishlist;
 
     //Constructors
     public Client(String username, String password) {
         super(username, password);
+        cart = new HashSet<>();
+        wishlist = new HashSet<>();
     }
 
     public Client(String username, String password, String name, String surname, String phoneNumber, String email, Address address, CardInfo card) {
         super(username, password, name, surname, phoneNumber, email);
         this.address = address;
         this.card = card;
+        cart = new HashSet<>();
+        wishlist = new HashSet<>();
     }
 
     // Cart Methods
-    public void addToCart(Product product, int quantity){
-        if (cart.size() != 0) {
-            for (OrderLine o : cart) {
-                if (o instanceof SimpleOrderLine) {
-                    SimpleOrderLine s = (SimpleOrderLine) o;
-                    if (s.getProduct().equals(product)) {
-                        s.setQuantity(s.getQuantity() + quantity);
-                        return;
-                    }
-                }
-            }
-        }
-        OrderLine orderLine = new SimpleOrderLine(product, quantity);
-        cart.add(orderLine);
+    public void addToCart(OrderLine orderLine) {
+        if (!cart.contains(orderLine))
+            cart.add(orderLine);
     }
 
-    public void addToCart(PcConfiguration config) {
-        cart.add(config);
+    public void removeFromCart(OrderLine orderLine) {
+        if (cart.contains(orderLine))
+            cart.remove(orderLine);
     }
 
-    public void removeFromCart(Product product, int quantity) {
-        if (cart.size()==0) return;
-        for (OrderLine orderLine: cart) {
-            if (orderLine instanceof SimpleOrderLine) {
-                SimpleOrderLine s = (SimpleOrderLine) orderLine;
-                if (s.getProduct().equals(product)) {
-                    if (s.getQuantity()<=quantity) cart.remove(s);
-                    else s.setQuantity(s.getQuantity()-quantity);
-                }
-            }
-        }
+    //Wishlist Methods
+    public void addToWishlist(Product p) {
+            if (!wishlist.contains(p))
+                wishlist.add(p);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void removeFromCart(PcConfiguration config) {
-        if (cart.size()==0) return;
-        for (OrderLine orderLine: cart) {
-            if (orderLine instanceof PcConfiguration) {
-                PcConfiguration pc = (PcConfiguration) orderLine;
-                if(pc.equals(config)) {
-                    cart.remove(pc);
-                    return;
-                }
-            }
-        }
+    public void removeFromWishlist(Product p) {
+        if (!wishlist.isEmpty())
+            if (wishlist.contains(p))
+                wishlist.remove(p);
     }
 
     //TODO Android
@@ -83,15 +57,6 @@ public class Client extends User {
         order.updateStock();
         // SendEmail(...)
         return order;
-    }
-
-    //Wishlist Methods
-    public void addToWishlist(Product p) {
-        if (!wishlist.contains(p)) wishlist.add(p);
-    }
-
-    public void removeFromWishlist(Product p) {
-        wishlist.remove(p);
     }
 
     //Getters and Setters
