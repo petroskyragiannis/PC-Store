@@ -48,17 +48,6 @@ public class Client extends User {
                 wishlist.remove(p);
     }
 
-    //TODO Android
-    public Order createOrder() {
-        Order order = new Order(this, cart);
-        cart = new HashSet<>();
-        // setDeliveryAddress(...);
-        // setPaymentMethod(...);
-        order.updateStock();
-        // SendEmail(...)
-        return order;
-    }
-
     //Getters and Setters
     public Address getAddress() {
         return address;
@@ -90,12 +79,6 @@ public class Client extends User {
 
     public void setWishlist(Set<Product> wishlist) {
         this.wishlist = wishlist;
-    }
-
-    public static class OutOfStockException extends Exception {
-        public OutOfStockException(String message) {
-            super(message);
-        }
     }
 
 }

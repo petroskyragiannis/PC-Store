@@ -258,7 +258,7 @@ public abstract class Initializer {
         orderDAO.save(new Order(orderDAO.nextId(),clientDAO.find("petraros"),
                 new HashSet<OrderLine>(Arrays.asList(pcConfigurationDAO.find(componentDAO.findByName("AMD Ryzen 5 3600")))), false,
                 new GregorianCalendar(),
-                Delivery.STORE, Payment.ON_PICKUP));
+                Delivery.STORE, Payment.CASH));
 
         orderDAO.save(new Order(orderDAO.nextId(),clientDAO.find("boubas"),
                 new HashSet<OrderLine>(Arrays.asList(

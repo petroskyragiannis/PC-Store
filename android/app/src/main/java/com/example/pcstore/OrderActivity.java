@@ -11,27 +11,36 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.pcstore.model.Address;
 import com.example.pcstore.model.CardInfo;
 import com.example.pcstore.model.Client;
 import com.example.pcstore.model.Delivery;
+import com.example.pcstore.model.Order;
 import com.example.pcstore.model.Payment;
 
-public class OrderActivity extends AppCompatActivity
-        implements ItemSelectionListener<Object>, OrderView {
+public class OrderActivity extends AppCompatActivity implements OrderView {
 
     public static final int REQUEST_CODE_CARD_INFO = 1;
     public static final int REQUEST_CODE_ADDRESS = 2;
+    public static final int REQUEST_CODE_PERSONAL_INFORMATION = 3;
+
+    Payment[] payments = Payment.values();
+    Delivery[] deliveries = Delivery.values();
 
     Client client;
+    Order order;
     TextView txtCreateOrder;
     TextView txtPayment;
     TextView txtDelivery;
     Spinner spinPayment;
     Spinner spinDelivery;
+    Button btnPersonalInformation;
     Button btnCardInfo;
     Button btnAddress;
     Button btnCompleteOrder;
+    private OrderViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,22 +51,39 @@ public class OrderActivity extends AppCompatActivity
         txtDelivery = findViewById(R.id.txt_delivery);
         spinPayment = findViewById(R.id.spin_payment);
         spinDelivery = findViewById(R.id.spin_delivery);
+        btnPersonalInformation = findViewById(R.id.btn_personal_information);
         btnCardInfo = findViewById(R.id.btn_card_info);
         btnAddress = findViewById(R.id.btn_address);
         btnCompleteOrder = findViewById(R.id.btn_complete_order);
 
         Intent intent = getIntent();
         client = (Client) intent.getSerializableExtra(MainActivity.SIGNED_IN_CLIENT);
+        if (client.getName() == null || client.getSurname() == null || client.getEmail() == null || client.getPhoneNumber() == null)
+            btnPersonalInformation.setVisibility(View.VISIBLE);
+        else btnPersonalInformation.setVisibility(View.INVISIBLE);
+
+        viewModel = new ViewModelProvider(this).get(OrderViewModel.class);
+        final OrderPresenter presenter = viewModel.getPresenter();
+        presenter.setView(this);
+        order = presenter.createOrder(client);
 
         // Setting Up Spinner <Payment>
-        ArrayAdapter<Payment> pAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Payment.values());
+        ArrayAdapter<Payment> pAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, payments);
         pAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinPayment.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        spinPayment.setAdapter(pAdapter);
+        spinPayment.setOnItemSelectedListener(new PaymentItemSelectionListener());
 
         // Setting Up Spinner <Delivery>
-        ArrayAdapter<Delivery> dAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Delivery.values());
+        ArrayAdapter<Delivery> dAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, deliveries);
         dAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinDelivery.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        spinDelivery.setAdapter(dAdapter);
+        spinDelivery.setOnItemSelectedListener(new DeliveryItemSelectionListener());
+
+        btnPersonalInformation.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                insertPersonalInfo();
+            }
+        });
 
         btnCardInfo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -73,15 +99,15 @@ public class OrderActivity extends AppCompatActivity
 
         btnCompleteOrder.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //TODO
+                presenter.completeOrder(order);
             }
         });
     }
 
-
-    @Override
-    protected void onPause() {
-        super.onPause();
+    public void insertPersonalInfo() {
+        Intent intent = new Intent(this, PersonalInformationActivity.class);
+        intent.putExtra(MainActivity.SIGNED_IN_CLIENT, client);
+        startActivityForResult(intent, REQUEST_CODE_PERSONAL_INFORMATION);
     }
 
     public void insertCardInfo() {
@@ -109,23 +135,43 @@ public class OrderActivity extends AppCompatActivity
                 Address address = (Address) data.getSerializableExtra(AddressActivity.ADDRESS);
                 client.setAddress(address);
             }
+        } else if (requestCode == REQUEST_CODE_PERSONAL_INFORMATION) {
+            if (resultCode == RESULT_OK) {
+                client = (Client) data.getSerializableExtra(PersonalInformationActivity.PERSONAL_INFORMATION);
+            }
         }
     }
-
 
     @Override
     public void showStatus(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    public void onItemSelected(Object item) {
-        if (item instanceof CardInfo) {
-            CardInfo cardInfo = (CardInfo) item;
-            //presenter.onItemSelected(cardInfo);
-        } else if (item instanceof Address) {
-            Address address = (Address) item;
-            //presenter.onItemSelected(address);
+    private class PaymentItemSelectionListener implements AdapterView.OnItemSelectedListener {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            Payment payment = payments[position];
+            viewModel.getPresenter().onItemSelected(order, payment);
+            if (payment.equals(Payment.CARD) && client.getCard()==null)
+                btnCardInfo.setVisibility(view.VISIBLE);
+            else btnCardInfo.setVisibility(view.INVISIBLE);
+
         }
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {}
     }
+
+    private class DeliveryItemSelectionListener implements AdapterView.OnItemSelectedListener {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            Delivery delivery = deliveries[position];
+            viewModel.getPresenter().onItemSelected(order, delivery);
+            if (delivery.equals(Delivery.ADDRESS) && client.getAddress()==null)
+                btnAddress.setVisibility(view.VISIBLE);
+            else btnAddress.setVisibility(view.INVISIBLE);
+        }
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {}
+    }
+
 }

@@ -91,7 +91,9 @@ public class CatalogActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        //TODO use presenter
+        //TODO
+        // presenter.returnClient(client);
+        // view.returnClient(client);
         Intent intent = new Intent();
         intent.putExtra(SINGED_OUT_CLIENT, client);
         setResult(RESULT_OK, intent);

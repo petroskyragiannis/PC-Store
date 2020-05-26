@@ -27,6 +27,14 @@
         </activity>
         <activity android:name="com.example.pcstore.WishlistActivity">
         </activity>
+        <activity android:name="com.example.pcstore.OrderActivity">
+        </activity>
+        <activity android:name="com.example.pcstore.CardInfoActivity">
+        </activity>
+        <activity android:name="com.example.pcstore.AddressActivity">
+        </activity>
+        <activity android:name="com.example.pcstore.PersonalInformationActivity">
+        </activity>
     </application>
 
 </manifest>

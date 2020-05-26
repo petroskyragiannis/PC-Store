@@ -86,49 +86,4 @@ public class Product implements Serializable {
         this.category = category;
     }
 
-    /* TODO Android
-    public static void printCatalog() {
-        Set<String> categories = new HashSet<>();
-        for (Product product: catalog) {
-            if (!categories.contains(product.getCategory())) {
-                System.out.println(product.getCategory());
-                categories.add(product.getCategory());
-            }
-        }
-    }
-
-
-    public static void printCatalog(String category) {
-        if (category.equalsIgnoreCase("Component")) {
-            Set<String> categories = new HashSet<>();
-            for (Product product: catalog) {
-                if (product.getCategory().equalsIgnoreCase("Component")) {
-                    Component component = (Component) product;
-                    String type = component.getType().getName();
-                    if (!categories.contains(type)) {
-                        System.out.println(type);
-                        categories.add(type);
-                    }
-                }
-            }
-        } else {
-            for (Product product: catalog) {
-                if (product.getCategory().equalsIgnoreCase(category) && product.getStock()>0)
-                        System.out.println(product.getName());
-            }
-        }
-    }
-
-    public static void printComponents(String type) {
-        for (Product product: catalog) {
-            if (product.getCategory().equalsIgnoreCase("Components")) {
-                Component component = (Component) product;
-                String componentType = component.getType().getName();
-                if (componentType.equalsIgnoreCase(type) && product.getStock()>0)
-                        System.out.println(component.getName());
-            }
-        }
-    }
-    */
-
 }

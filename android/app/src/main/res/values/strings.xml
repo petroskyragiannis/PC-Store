@@ -49,5 +49,11 @@
     <string name="petros_kyragiannis">Petros Kyragiannis</string>
     <string name="cardnumber">CardNumber</string>
     <string name="expirationdate">ExpirationDate</string>
-    <string name="csv">Csv</string>
+    <string name="csv">CSV</string>
+    <string name="card_information">Card Information</string>
+    <string name="expiration_date">Expiration Date</string>
+    <string name="_123">123</string>
+    <string name="name">Name</string>
+    <string name="_0123_4567_8901_2345">0123 - 4567 - 8901 - 2345</string>
+    <string name="insert_your_personal_information">insert your personal information</string>
 </resources>

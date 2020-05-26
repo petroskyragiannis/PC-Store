@@ -1,12 +1,8 @@
 package com.example.pcstore.model;
 
 import android.os.Build;
-
 import androidx.annotation.RequiresApi;
-
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -21,7 +17,6 @@ public class Order {
     private Payment paymentMethod;
 
     // Constructors
-
     public Order(Client client, Set<OrderLine> orderLines) {
         this.client = client;
         this.orderLines = orderLines;
@@ -35,6 +30,14 @@ public class Order {
         this.orderDate = orderDate;
         this.deliveryMethod = deliveryMethod;
         this.paymentMethod = paymentMethod;
+    }
+
+    public int getTotal() {
+        int total=0;
+        for (OrderLine orderLine: orderLines) {
+            total += orderLine.getSubTotal();
+        }
+        return total;
     }
 
     public void updateStock() {
@@ -127,25 +130,4 @@ public class Order {
         this.paymentMethod = paymentMethod;
     }
 
-    public int getTotal() {
-        int total=0;
-        for (OrderLine orderLine: orderLines) {
-            total += orderLine.getSubTotal();
-        }
-        return total;
-    }
-
-    //TODO Android
-    /*
-    public static int getMonthlyReport(int month) {
-        int monthlyIncome = 0;
-        for (Order order: orders) {
-            if (order.getOrderDate().get(Calendar.MONTH)==month) {
-                monthlyIncome += order.getTotal();
-            }
-        }
-        return monthlyIncome;
-    }
-
-     */
 }
