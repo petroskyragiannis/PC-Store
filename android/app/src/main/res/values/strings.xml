@@ -56,4 +56,14 @@
     <string name="name">Name</string>
     <string name="_0123_4567_8901_2345">0123 - 4567 - 8901 - 2345</string>
     <string name="insert_your_personal_information">insert your personal information</string>
+    <string name="name1">Name</string>
+    <string name="surname">Surname</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email">Email</string>
+    <string name="giannis_gmail_com">giannis@gmail.com</string>
+    <string name="_6999999999">6999999999</string>
+    <string name="giannaros">giannaros</string>
+    <string name="giannis">giannis</string>
+    <string name="ok">OK</string>
 </resources>
