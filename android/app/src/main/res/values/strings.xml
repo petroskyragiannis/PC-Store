@@ -32,38 +32,36 @@
     <string name="fill_your_address_information">fill your address information</string>
     <string name="fill_your_card_information">fill your card information</string>
     <string name="complete_order">complete order</string>
+
+    <string name="card_information">Card Information</string>
+    <string name="cardnumber">CardNumber</string>
+    <string name="name">Name</string>
+    <string name="expirationdate">ExpirationDate</string>
+    <string name="csv">CSV</string>
+    <string name="expiration_date">Expiration Date</string>
+    <string name="petros_kyragiannis">Petros Kyragiannis</string>
+    <string name="_0123_4567_8901_2345">0123 - 4567 - 8901 - 2345</string>
+    <string name="_1_1_21">01/01/21</string>
+    <string name="_123">123</string>
+
     <string name="address">Address</string>
     <string name="street">Street</string>
+    <string name="number">Number</string>
     <string name="town">Town</string>
     <string name="zipcode">Zipcode</string>
-    <string name="number">Number</string>
     <string name="thiseos">Thiseos</string>
     <string name="_15">15</string>
     <string name="kifisia">Kifisia</string>
     <string name="_14561">14561</string>
-    <string name="card_info">card_info</string>
-    <string name="_000">000</string>
-    <string name="cardholdername">CardHolderName</string>
-    <string name="_0000">0000</string>
-    <string name="_1_1_21">1/1/21</string>
-    <string name="petros_kyragiannis">Petros Kyragiannis</string>
-    <string name="cardnumber">CardNumber</string>
-    <string name="expirationdate">ExpirationDate</string>
-    <string name="csv">CSV</string>
-    <string name="card_information">Card Information</string>
-    <string name="expiration_date">Expiration Date</string>
-    <string name="_123">123</string>
-    <string name="name">Name</string>
-    <string name="_0123_4567_8901_2345">0123 - 4567 - 8901 - 2345</string>
+
     <string name="insert_your_personal_information">insert your personal information</string>
-    <string name="name1">Name</string>
-    <string name="surname">Surname</string>
-    <string name="personal_information">Personal Information</string>
-    <string name="phone_number">Phone Number</string>
-    <string name="email">Email</string>
-    <string name="giannis_gmail_com">giannis@gmail.com</string>
-    <string name="_6999999999">6999999999</string>
-    <string name="giannaros">giannaros</string>
-    <string name="giannis">giannis</string>
     <string name="ok">OK</string>
+    <string name="surname">Surname</string>
+    <string name="email">Email</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="petros">Petros</string>
+    <string name="boubalis">Boubalis</string>
+    <string name="_6900000000">6900000000</string>
+    <string name="boubas_gmail_com">boubas@gmail.com</string>
+
 </resources>

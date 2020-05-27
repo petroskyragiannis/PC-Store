@@ -11,6 +11,8 @@ public class CardInfo implements Serializable {
     private String csv;
 
     // Constructors
+    public CardInfo() { }
+
     public CardInfo(String cardHolderName, String cardNumber, Calendar expirationDate, String csv) {
         this.cardHolderName = cardHolderName;
         this.cardNumber = cardNumber;

@@ -9,10 +9,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.example.pcstore.model.Address;
 import com.example.pcstore.model.CardInfo;
 import com.example.pcstore.model.Client;
@@ -81,7 +79,7 @@ public class OrderActivity extends AppCompatActivity implements OrderView {
 
         btnPersonalInformation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                insertPersonalInfo();
+                insertPersonalInformation();
             }
         });
 
@@ -104,7 +102,7 @@ public class OrderActivity extends AppCompatActivity implements OrderView {
         });
     }
 
-    public void insertPersonalInfo() {
+    public void insertPersonalInformation() {
         Intent intent = new Intent(this, PersonalInformationActivity.class);
         intent.putExtra(MainActivity.SIGNED_IN_CLIENT, client);
         startActivityForResult(intent, REQUEST_CODE_PERSONAL_INFORMATION);
