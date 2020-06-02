@@ -9,31 +9,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.pcstore.MainActivity">
+        <activity android:name="com.example.pcstore.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.pcstore.RegisterActivity">
+        <activity android:name="com.example.pcstore.login.RegisterActivity" android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
-        <activity android:name="com.example.pcstore.CatalogActivity">
+        <activity android:name="com.example.pcstore.catalog.CatalogActivity" android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
-        <activity android:name="com.example.pcstore.ConfigurationActivity">
+        <activity android:name="com.example.pcstore.configuration.ConfigurationActivity" android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
-        <activity android:name="com.example.pcstore.ComponentActivity">
+        <activity android:name="com.example.pcstore.component.ComponentActivity" android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
-        <activity android:name="com.example.pcstore.CartActivity">
+        <activity android:name="com.example.pcstore.cart.CartActivity" android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
-        <activity android:name="com.example.pcstore.WishlistActivity">
+        <activity android:name="com.example.pcstore.wishlist.WishlistActivity" android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
-        <activity android:name="com.example.pcstore.OrderActivity">
+        <activity android:name="com.example.pcstore.order.OrderActivity" android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
-        <activity android:name="com.example.pcstore.CardInfoActivity">
+        <activity android:name="com.example.pcstore.client.CardInfoActivity" android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
-        <activity android:name="com.example.pcstore.AddressActivity">
+        <activity android:name="com.example.pcstore.client.AddressActivity" android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
-        <activity android:name="com.example.pcstore.PersonalInformationActivity">
+        <activity android:name="com.example.pcstore.client.PersonalInformationActivity" android:configChanges="orientation|screenSize|keyboardHidden">
+        </activity>
+        <activity android:name="com.example.pcstore.order.OrderCompletedActivity" android:configChanges="orientation|screenSize|keyboardHidden">
+        </activity>
+        <activity android:name="com.example.pcstore.catalog_update.CatalogUpdateActivity" android:configChanges="orientation|screenSize|keyboardHidden">
+        </activity>
+        <activity android:name="com.example.pcstore.catalog_update.ProductUpdateActivity" android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
     </application>
 

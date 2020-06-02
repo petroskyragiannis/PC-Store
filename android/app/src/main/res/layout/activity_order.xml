@@ -22,75 +22,78 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_personal_information"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:text="@string/insert_your_personal_information"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_create_order" />
-
     <TextView
         android:id="@+id/txt_payment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:text="@string/payment_method"
-        android:textSize="18sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/spin_payment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_personal_information" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_create_order" />
 
     <Spinner
         android:id="@+id/spin_payment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:spinnerMode="dropdown"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/txt_payment"
-        app:layout_constraintTop_toBottomOf="@+id/btn_personal_information" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_create_order" />
+
+    <TextView
+        android:id="@+id/txt_card_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/you_need_to_fill_your_card"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/btn_card_info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin_payment" />
 
     <Button
         android:id="@+id/btn_card_info"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:text="@string/fill_your_card_information"
+        android:text="@string/card"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin_payment" />
 
     <TextView
         android:id="@+id/txt_delivery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:text="@string/delivery_method"
-        android:textSize="18sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/spin_delivery"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_card_info" />
 
@@ -98,31 +101,91 @@
         android:id="@+id/spin_delivery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/txt_delivery"
         app:layout_constraintTop_toBottomOf="@+id/btn_card_info" />
+
+    <TextView
+        android:id="@+id/txt_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/you_need_to_fill_your_address"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/btn_address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin_delivery" />
 
     <Button
         android:id="@+id/btn_address"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/address"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin_delivery" />
+
+    <TextView
+        android:id="@+id/txt_personal_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:text="@string/fill_your_address_information"
+        android:gravity="center"
+        android:text="@string/enter_personal_information"
+        android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spin_delivery" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_address" />
+
+    <Button
+        android:id="@+id/btn_personal_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/personal_information"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_personal_information" />
+
+    <TextView
+        android:id="@+id/txt_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/btn_complete_order"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_address"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btn_complete_order"

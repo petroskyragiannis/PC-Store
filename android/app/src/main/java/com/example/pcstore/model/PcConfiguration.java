@@ -31,12 +31,12 @@ public class PcConfiguration extends OrderLine {
     private Component mouse;
     private Component keyboard;
     private Component monitor;
-
     private Component[] components;
 
     // Constructor
     public PcConfiguration() {
         super(1);
+        components = new Component[] {pcCase, cpu, motherboard, ram, gpu, hardDrive, psu, mouse, keyboard, monitor};
     }
 
     public PcConfiguration(Component pcCase, Component cpu, Component motherboard, Component ram, Component gpu, Component hardDrive, Component psu, Component mouse, Component keyboard, Component monitor) {
@@ -130,12 +130,21 @@ public class PcConfiguration extends OrderLine {
     }
 
     @Override
+    public void restoreStock() {
+        for (Component c: components) {
+            if (c != null)
+                c.setStock(c.getStock() + quantity);
+        }
+    }
+
+    @Override
     public int getStock() {
         int minStock = pcCase.getStock();
-        for (Component component: components) {
-            if (component.getStock() < minStock)
-                minStock = component.getStock();
-        }
+        for (Component component: components)
+            if (component != null) {
+                if (component.getStock() < minStock)
+                    minStock = component.getStock();
+            }
         return minStock;
     }
 
@@ -183,6 +192,7 @@ public class PcConfiguration extends OrderLine {
         ComponentType c2 = new ComponentType(Hardware.CASE, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.pcCase = c1;
+            components[0] = c1;
         }
     }
 
@@ -194,6 +204,7 @@ public class PcConfiguration extends OrderLine {
         ComponentType c2 = new ComponentType(Hardware.CPU, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.cpu = c1;
+            components[1] = c1;
         }
     }
 
@@ -205,6 +216,7 @@ public class PcConfiguration extends OrderLine {
         ComponentType c2 = new ComponentType(Hardware.MOTHERBOARD, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.motherboard = c1;
+            components[2] = c1;
         }
     }
 
@@ -216,6 +228,7 @@ public class PcConfiguration extends OrderLine {
         ComponentType c2 = new ComponentType(Hardware.RAM, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.ram = c1;
+            components[3] = c1;
         }
     }
 
@@ -227,6 +240,7 @@ public class PcConfiguration extends OrderLine {
         ComponentType c2 = new ComponentType(Hardware.GPU, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.gpu = c1;
+            components[4] = c1;
         }
     }
 
@@ -238,6 +252,7 @@ public class PcConfiguration extends OrderLine {
         ComponentType c2 = new ComponentType(Hardware.HARD_DRIVE, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.hardDrive = c1;
+            components[5] = c1;
         }
     }
 
@@ -249,6 +264,7 @@ public class PcConfiguration extends OrderLine {
         ComponentType c2 = new ComponentType(Hardware.PSU, true);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.psu = c1;
+            components[6] = c1;
         }
     }
 
@@ -260,6 +276,7 @@ public class PcConfiguration extends OrderLine {
         ComponentType c2 = new ComponentType(Hardware.MOUSE, false);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.mouse = c1;
+            components[7] = c1;
         }
     }
 
@@ -271,6 +288,7 @@ public class PcConfiguration extends OrderLine {
         ComponentType c2 = new ComponentType(Hardware.KEYBOARD, false);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.keyboard = c1;
+            components[8] = c1;
         }
     }
 
@@ -282,6 +300,7 @@ public class PcConfiguration extends OrderLine {
         ComponentType c2 = new ComponentType(Hardware.MONITOR, false);
         if (c1.getType().equals(c2) && c1.getStock()>0) {
             this.monitor = c1;
+            components[9] = c1;
         }
     }
 

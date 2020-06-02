@@ -6,43 +6,47 @@
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="register">Register</string>
     <string name="don_t_want_to_login">Don\'t want to login?</string>
-    <string name="login_as_guest">Login as Guest</string>
+    <string name="continue_as_guest">Continue as Guest</string>
+    <string name="create_account">Create Account</string>
     <string name="already_have_an_account">Already have an account?</string>
-    <string name="product_catalog">Product Catalog</string>
+
+    <string name="create_a_custom_pc_configuration">Create a custom PC configuration:</string>
+    <string name="product">Product </string>
     <string name="add_to_cart">Add to Cart</string>
-    <string name="product_name">Product Name</string>
-    <string name="custom_pc_configuration">Custom PC Configuration</string>
-    <string name="select_category">Select Category</string>
-    <string name="category">Category</string>
-    <string name="create_your_own_pc_configuration_here">Create your own PC configuration here:</string>
-    <string name="confirm">Confirm</string>
-    <string name="select_type">Select Type</string>
-    <string name="select_component">Select Component</string>
-    <string name="view_cart">View Cart</string>
     <string name="add_to_wishlist">Add to Wishlist</string>
     <string name="view_wishlist">View Wishlist</string>
+    <string name="view_cart">View Cart</string>
+
+    <string name="custom_pc_configuration">Custom PC Configuration</string>
+    <string name="select_category">Select Category</string>
+    <string name="component_type">Component Type</string>
+    <string name="confirm">Confirm</string>
+    <string name="select_component">Select Component</string>
+
     <string name="wishlist">Wishlist</string>
     <string name="remove_from_wishlist">Remove From Wishlist</string>
     <string name="cart">Cart</string>
     <string name="remove_from_cart">Remove From Cart</string>
     <string name="quantity">Quantity</string>
+    <string name="_1">1</string>
     <string name="create_order">Create Order</string>
     <string name="payment_method">Payment Method:</string>
     <string name="delivery_method">Delivery Method:</string>
-    <string name="fill_your_address_information">fill your address information</string>
-    <string name="fill_your_card_information">fill your card information</string>
+    <string name="you_need_to_fill_your_card">You need to fill your card.</string>
+    <string name="you_need_to_fill_your_address">You need to fill your address.</string>
+    <string name="you_need_to_fill_your_personal_information">You need to fill your personal information.</string>
     <string name="complete_order">complete order</string>
 
     <string name="card_information">Card Information</string>
     <string name="cardnumber">CardNumber</string>
     <string name="name">Name</string>
-    <string name="expirationdate">ExpirationDate</string>
-    <string name="csv">CSV</string>
     <string name="expiration_date">Expiration Date</string>
+    <string name="csv">CSV</string>
     <string name="petros_kyragiannis">Petros Kyragiannis</string>
     <string name="_0123_4567_8901_2345">0123 - 4567 - 8901 - 2345</string>
-    <string name="_1_1_21">01/01/21</string>
+    <string name="_01_01_2021">01/01/2021</string>
     <string name="_123">123</string>
+    <string name="ok">OK</string>
 
     <string name="address">Address</string>
     <string name="street">Street</string>
@@ -54,14 +58,29 @@
     <string name="kifisia">Kifisia</string>
     <string name="_14561">14561</string>
 
-    <string name="insert_your_personal_information">insert your personal information</string>
-    <string name="ok">OK</string>
     <string name="surname">Surname</string>
     <string name="email">Email</string>
     <string name="personal_information">Personal Information</string>
     <string name="petros">Petros</string>
     <string name="boubalis">Boubalis</string>
-    <string name="_6900000000">6900000000</string>
+    <string name="_6971234568">6971234568</string>
     <string name="boubas_gmail_com">boubas@gmail.com</string>
+    <string name="card">Card</string>
+    <string name="enter_personal_information">You also need to enter your personal information. Click here:</string>
+
+    <string name="order_completed">Order Completed</string>
+    <string name="order_has_been_successfully_created">Order has been successfully created.</string>
+    <string name="client">Client:</string>
+    <string name="order_email">Receipt has been sent to: "\n"</string>
+    <string name="exit">Exit</string>
+
+    <string name="edit_product">Edit Product</string>
+    <string name="id">ID:</string>
+    <string name="product_name">Name:</string>
+    <string name="price">Price:</string>
+    <string name="stock">Stock:</string>
+    <string name="category">Category:</string>
+    <string name="done">Done</string>
+
 
 </resources>

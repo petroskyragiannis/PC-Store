@@ -13,6 +13,8 @@ public abstract class OrderLine implements Serializable {
 
     public abstract void updateStock();
 
+    public abstract void restoreStock();
+
     public abstract int getStock();
 
     public void setQuantity(int quantity) {

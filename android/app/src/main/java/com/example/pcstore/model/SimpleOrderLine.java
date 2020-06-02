@@ -15,12 +15,17 @@ public class SimpleOrderLine extends OrderLine {
 
     @Override
     public int getSubTotal() {
-        return product.getPrice()*quantity;
+        return product.getPrice() * quantity;
     }
 
     @Override
     public void updateStock() {
-        product.setStock(product.getStock()-quantity);
+        product.setStock(product.getStock() - quantity);
+    }
+
+    @Override
+    public void restoreStock() {
+        product.setStock(product.getStock() + quantity);
     }
 
     @Override

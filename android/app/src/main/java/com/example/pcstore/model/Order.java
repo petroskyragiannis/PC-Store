@@ -2,11 +2,13 @@ package com.example.pcstore.model;
 
 import android.os.Build;
 import androidx.annotation.RequiresApi;
+
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.Set;
 
-public class Order {
+public class Order implements Serializable {
 
     private int id;
     private Client client;

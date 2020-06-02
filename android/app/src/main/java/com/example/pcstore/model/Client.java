@@ -26,26 +26,38 @@ public class Client extends User {
     }
 
     // Cart Methods
-    public void addToCart(OrderLine orderLine) {
-        if (!cart.contains(orderLine))
+    public boolean addToCart(OrderLine orderLine) {
+        if (!cart.contains(orderLine)) {
             cart.add(orderLine);
+            return true;
+        }
+        return false;
     }
 
-    public void removeFromCart(OrderLine orderLine) {
-        if (cart.contains(orderLine))
+    public boolean removeFromCart(OrderLine orderLine) {
+        if (cart.contains(orderLine)) {
             cart.remove(orderLine);
+            return true;
+        }
+        return false;
     }
 
     //Wishlist Methods
-    public void addToWishlist(Product p) {
-            if (!wishlist.contains(p))
-                wishlist.add(p);
+    public boolean addToWishlist(Product p) {
+        if (!wishlist.contains(p)) {
+            wishlist.add(p);
+            return true;
+        }
+        return false;
     }
 
-    public void removeFromWishlist(Product p) {
+    public boolean removeFromWishlist(Product p) {
         if (!wishlist.isEmpty())
-            if (wishlist.contains(p))
+            if (wishlist.contains(p)) {
                 wishlist.remove(p);
+                return true;
+            }
+        return false;
     }
 
     //Getters and Setters

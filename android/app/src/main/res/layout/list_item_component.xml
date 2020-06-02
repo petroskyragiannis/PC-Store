@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/select_component"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <CheckBox
             android:id="@+id/btn_select_component"
