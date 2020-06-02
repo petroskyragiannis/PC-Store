@@ -7,7 +7,7 @@ import com.example.pcstore.model.User;
 
 public class RegisterPresenter {
 
-    private StatusView view;
+    private RegisterView view;
     private UserDAO userDAO;
 
     public RegisterPresenter() {}
@@ -53,13 +53,17 @@ public class RegisterPresenter {
     }
 
     public void logout(User user) {
-        if (user.getUsername() != "guest") {
+        if (!user.getUsername().equals("guest")) {
             userDAO.delete(user);
             userDAO.save(user);
         }
     }
 
-    public void setView(StatusView view) {
+    public void returnCredentials(String username, String password) {
+        view.returnCredentials(username,password);
+    }
+
+    public void setView(RegisterView view) {
         this.view = view;
     }
 

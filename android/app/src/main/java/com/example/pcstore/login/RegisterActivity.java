@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.pcstore.R;
 
-public class RegisterActivity extends AppCompatActivity implements StatusView  {
+public class RegisterActivity extends AppCompatActivity implements RegisterView {
 
     public static final String REGISTERED_CLIENT_USERNAME = "username";
     public static final String REGISTERED_CLIENT_PASSWORD = "password";
@@ -44,11 +44,7 @@ public class RegisterActivity extends AppCompatActivity implements StatusView  {
                 String username = edtUsername.getText().toString();
                 String password = edtPassword.getText().toString();
                 if (presenter.register(username, password) != null) {
-                    Intent intent = new Intent();
-                    intent.putExtra(REGISTERED_CLIENT_USERNAME, username);
-                    intent.putExtra(REGISTERED_CLIENT_PASSWORD, password);
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    presenter.returnCredentials(username,password);
                 }
             }
         });
@@ -65,7 +61,14 @@ public class RegisterActivity extends AppCompatActivity implements StatusView  {
         super.onPause();
     }
 
-
+    @Override
+    public void returnCredentials(String username, String password) {
+        Intent intent = new Intent();
+        intent.putExtra(REGISTERED_CLIENT_USERNAME, username);
+        intent.putExtra(REGISTERED_CLIENT_PASSWORD, password);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
 
     @Override
     public void showStatus(String msg) {

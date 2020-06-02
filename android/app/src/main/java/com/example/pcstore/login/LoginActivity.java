@@ -20,7 +20,7 @@ import com.example.pcstore.model.User;
 import static com.example.pcstore.login.RegisterActivity.REGISTERED_CLIENT_PASSWORD;
 import static com.example.pcstore.login.RegisterActivity.REGISTERED_CLIENT_USERNAME;
 
-public class LoginActivity extends AppCompatActivity implements StatusView {
+public class LoginActivity extends AppCompatActivity implements RegisterView {
 
     public static final String SIGNED_IN_CLIENT = "client";
     public static final String SIGNED_IN_EMPLOYEE = "employee";
@@ -80,6 +80,9 @@ public class LoginActivity extends AppCompatActivity implements StatusView {
         });
 
     }
+
+    @Override
+    public void returnCredentials(String username, String password) {}
 
     @Override
     public void showStatus(String msg) {
