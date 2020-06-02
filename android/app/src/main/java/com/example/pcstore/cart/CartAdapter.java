@@ -61,7 +61,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         final OrderLine itemAtPosition = itemList.get(position);
         holder.edtQuantity.setText(Integer.toString(itemAtPosition.getQuantity()));
         //int max = itemAtPosition.getQuantity() + itemAtPosition.getStock();
-        //holder.edtQuantity.setHint("Max: " + max);
+        holder.edtQuantity.setHint("Max: " + itemAtPosition.getStock());
         if (itemAtPosition instanceof SimpleOrderLine) {
             SimpleOrderLine simpleOrderLine = (SimpleOrderLine) itemAtPosition;
             holder.txtCartProductName.setText(simpleOrderLine.getProduct().getName() + "\n" + simpleOrderLine.getProduct().getPrice() + "€");

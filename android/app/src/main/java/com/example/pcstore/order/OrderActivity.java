@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.example.pcstore.catalog.CatalogActivity;
 import com.example.pcstore.client.AddressActivity;
 import com.example.pcstore.client.CardInfoActivity;
@@ -23,10 +22,7 @@ import com.example.pcstore.model.CardInfo;
 import com.example.pcstore.model.Client;
 import com.example.pcstore.model.Delivery;
 import com.example.pcstore.model.Order;
-import com.example.pcstore.model.OrderLine;
 import com.example.pcstore.model.Payment;
-
-import java.util.HashSet;
 
 public class OrderActivity extends AppCompatActivity implements OrderView {
 
@@ -123,8 +119,8 @@ public class OrderActivity extends AppCompatActivity implements OrderView {
         btnCompleteOrder.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (presenter.completeOrder(order)) {
-                    order.updateStock();
-                    orderCreated();
+                    CatalogActivity.getInstance().finish();
+                    orderCompleted();
                 }
             }
         });
@@ -175,11 +171,10 @@ public class OrderActivity extends AppCompatActivity implements OrderView {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-    public void orderCreated() {
+    public void orderCompleted() {
         Intent intent = new Intent(this, OrderCompletedActivity.class);
         intent.putExtra(ORDER_COMPLETED, order);
         startActivity(intent);
-        client.setCart(new HashSet<OrderLine>());
         finish();
     }
 

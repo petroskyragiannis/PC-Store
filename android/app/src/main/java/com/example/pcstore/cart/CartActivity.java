@@ -23,6 +23,7 @@ public class CartActivity extends AppCompatActivity
 
     private static final int REQUEST_CODE_ORDER = 1;
     public static final String UPDATED_CART = "updated cart";
+    public static CartActivity cartActivity;
 
     Client client;
     TextView txtCart;
@@ -40,6 +41,7 @@ public class CartActivity extends AppCompatActivity
         btnCreateOrder = findViewById((R.id.btn_create_order));
         recyclerView = findViewById(R.id.rv_cart);
 
+        cartActivity = this;
         Intent intent = getIntent();
         client = (Client) intent.getSerializableExtra(LoginActivity.SIGNED_IN_CLIENT);
 
@@ -65,6 +67,10 @@ public class CartActivity extends AppCompatActivity
                 }
             }
         });
+    }
+
+    public static CartActivity getInstance() {
+        return cartActivity;
     }
 
     @Override

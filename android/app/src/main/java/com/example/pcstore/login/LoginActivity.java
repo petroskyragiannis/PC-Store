@@ -120,7 +120,6 @@ public class LoginActivity extends AppCompatActivity implements StatusView {
         } else if (requestCode == REQUEST_CODE_SIGNED_OUT_EMPLOYEE) {
             if (resultCode == RESULT_OK) {
                 Employee signedOutEmployee = (Employee) data.getSerializableExtra(CatalogUpdateActivity.SIGNED_OUT_EMPLOYEE);
-                //TODO return updated products?
                 viewModel.getPresenter().logout(signedOutEmployee);
             }
         }

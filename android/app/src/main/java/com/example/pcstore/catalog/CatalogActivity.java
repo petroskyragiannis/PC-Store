@@ -31,6 +31,7 @@ public class CatalogActivity extends AppCompatActivity
     public static final int REQUEST_CODE_PC_CONFIGURATION = 1;
     public static final int REQUEST_CODE_WISHLIST = 2;
     public static final int REQUEST_CODE_CART = 3;
+    public static CatalogActivity catalogActivity;
 
     Client client;
     TextView txtConfiguration;
@@ -52,6 +53,7 @@ public class CatalogActivity extends AppCompatActivity
         btnViewWishlist = findViewById(R.id.btn_view_wishlist);
         recyclerView = findViewById(R.id.rv_catalog);
 
+        catalogActivity = this;
         Intent intent = getIntent();
         client = (Client) intent.getSerializableExtra(LoginActivity.SIGNED_IN_CLIENT);
 
@@ -86,6 +88,10 @@ public class CatalogActivity extends AppCompatActivity
         });
     }
 
+    public static CatalogActivity getInstance() {
+        return catalogActivity;
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -94,12 +100,17 @@ public class CatalogActivity extends AppCompatActivity
 
     @Override
     public void onItemSelectedCart(Product product) {
-        viewModel.getPresenter().onProductSelectedCart(client, product);
+        if (viewModel.getPresenter().onItemSelectedCart(client, product)) {
+            adapter.setDataset(viewModel.getPresenter().getCatalog());
+            adapter.notifyDataSetChanged();
+        }
+
     }
 
     @Override
     public void onItemSelectedWishlist(Product product) {
-        viewModel.getPresenter().onProductSelectedWishlist(client, product);
+        viewModel.getPresenter().onItemSelectedWishlist(client, product);
+
     }
 
     @Override
@@ -144,7 +155,10 @@ public class CatalogActivity extends AppCompatActivity
         if (requestCode == REQUEST_CODE_PC_CONFIGURATION) {
             if (resultCode == RESULT_OK) {
                 PcConfiguration config = (PcConfiguration) data.getSerializableExtra(ConfigurationActivity.PC_CONFIGURATION);
-                viewModel.getPresenter().onPcConfigurationSelected(client, config);
+                if (viewModel.getPresenter().onPcConfigurationSelected(client, config)) {
+                    adapter.setDataset(viewModel.getPresenter().getCatalog());
+                    adapter.notifyDataSetChanged();
+                }
             }
         } else if (requestCode == REQUEST_CODE_WISHLIST) {
             if (resultCode == RESULT_OK) {

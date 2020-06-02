@@ -36,6 +36,10 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.ViewHold
     }
 
 
+    public void setDataset(List<Product> dataset) {
+        itemList = dataset;
+    }
+
     public void setCatalogSelectionListener(CatalogSelectionListener<Product> catalogSelectionListener) {
         this.catalogSelectionListener = catalogSelectionListener;
     }

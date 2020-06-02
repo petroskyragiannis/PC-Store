@@ -24,7 +24,6 @@ public class OrderCompletedActivity extends AppCompatActivity {
     TextView txtOrderPayment;
     TextView txtOrderDelivery;
     TextView txtOrderEmail;
-
     Button btnExit;
 
     @Override

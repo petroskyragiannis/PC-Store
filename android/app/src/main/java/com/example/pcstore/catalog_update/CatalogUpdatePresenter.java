@@ -16,12 +16,12 @@ public class CatalogUpdatePresenter {
         return productDAO.findAll();
     }
 
-    public void deleteProduct(Product product) {
-        productDAO.delete(product);
-    }
-
     public void saveProduct(Product product) {
             productDAO.save(product);
+    }
+
+    public void deleteProduct(Product product) {
+        productDAO.delete(product);
     }
 
     public void signOutEmployee(Employee employee) {
