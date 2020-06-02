@@ -2,7 +2,12 @@ package com.example.pcstore.cart;
 
 import com.example.pcstore.dao.ProductDAO;
 import com.example.pcstore.model.Client;
+import com.example.pcstore.model.Component;
 import com.example.pcstore.model.OrderLine;
+import com.example.pcstore.model.PcConfiguration;
+import com.example.pcstore.model.Product;
+import com.example.pcstore.model.SimpleOrderLine;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -22,23 +27,57 @@ public class CartPresenter {
 
     public void onItemSelected(Client client, OrderLine orderLine) {
         client.removeFromCart(orderLine);
-        //orderLine.restoreStock();
+        if (orderLine instanceof SimpleOrderLine) {
+            SimpleOrderLine simpleOrderLine = (SimpleOrderLine) orderLine;
+            deleteProduct(simpleOrderLine.getProduct());
+            simpleOrderLine.restoreStock();
+            saveProduct(simpleOrderLine.getProduct());
+        } else if (orderLine instanceof PcConfiguration) {
+            PcConfiguration pcConfiguration = (PcConfiguration) orderLine;
+            for (Component c : pcConfiguration.getComponents())
+                if (c != null) deleteProduct(c);
+            pcConfiguration.restoreStock();
+            for (Component c : pcConfiguration.getComponents())
+                if (c != null) saveProduct(c);
+        }
     }
 
-    public void onItemSelected(OrderLine orderLine, int quantity) {
-        if (quantity == 0) return;
-        //orderLine.restoreStock();
-        if (quantity > orderLine.getStock()) {
+    public boolean onItemSelected(OrderLine orderLine, int quantity) {
+        if (quantity <= 0 || quantity > orderLine.getStock() + orderLine.getQuantity()) {
             view.showStatus("Not enough stock.");
+            return false;
         }
-        else {
-            orderLine.setQuantity(quantity);
-            //ForderLine.updateStock();
+        if (orderLine instanceof SimpleOrderLine) {
+            SimpleOrderLine simpleOrderLine = (SimpleOrderLine) orderLine;
+            deleteProduct(simpleOrderLine.getProduct());
+            simpleOrderLine.restoreStock();
+
+            simpleOrderLine.setQuantity(quantity);
+            simpleOrderLine.updateStock();
+            saveProduct(simpleOrderLine.getProduct());
+        } else if (orderLine instanceof PcConfiguration) {
+            PcConfiguration pcConfiguration = (PcConfiguration) orderLine;
+            for (Component c : pcConfiguration.getComponents())
+                if (c != null) deleteProduct(c);
+            pcConfiguration.restoreStock();
+            pcConfiguration.setQuantity(quantity);
+            pcConfiguration.updateStock();
+            for (Component c : pcConfiguration.getComponents())
+                if (c != null) saveProduct(c);
         }
+        return true;
     }
 
     public void returnCart() {
         view.returnCart();
+    }
+
+    public void saveProduct(Product product) {
+        productDAO.save(product);
+    }
+
+    public void deleteProduct(Product product) {
+        productDAO.delete(product);
     }
 
     public void setProductDAO(ProductDAO productDAO) {

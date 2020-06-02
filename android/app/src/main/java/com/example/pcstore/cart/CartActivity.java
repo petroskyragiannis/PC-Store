@@ -81,18 +81,17 @@ public class CartActivity extends AppCompatActivity
         adapter.notifyDataSetChanged();
         // Return Cart
         viewModel.getPresenter().returnCart();
-        //TODO fix product stocks
     }
 
     @Override
     public void onItemSelected(OrderLine orderLine, int quantity) {
-        viewModel.getPresenter().onItemSelected(orderLine, quantity);
-        // Update Adapter's dataset
-        adapter.setDataset(viewModel.getPresenter().getCartList(client.getCart()));
-        adapter.notifyDataSetChanged();
-        // Return Cart
-        viewModel.getPresenter().returnCart();
-        //TODO fix product stocks
+        if (viewModel.getPresenter().onItemSelected(orderLine, quantity)) {
+            // Update Adapter's dataset
+            adapter.setDataset(viewModel.getPresenter().getCartList(client.getCart()));
+            adapter.notifyDataSetChanged();
+            // Return Cart
+            viewModel.getPresenter().returnCart();
+        }
     }
 
     @Override

@@ -60,7 +60,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final OrderLine itemAtPosition = itemList.get(position);
         holder.edtQuantity.setText(Integer.toString(itemAtPosition.getQuantity()));
-        //int max = itemAtPosition.getQuantity() + itemAtPosition.getStock();
+        int max = itemAtPosition.getQuantity() + itemAtPosition.getStock();
+        //TODO max
         holder.edtQuantity.setHint("Max: " + itemAtPosition.getStock());
         if (itemAtPosition instanceof SimpleOrderLine) {
             SimpleOrderLine simpleOrderLine = (SimpleOrderLine) itemAtPosition;
@@ -82,6 +83,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.edtQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void  onClick(View v) {
+                if (holder.edtQuantity.getText().toString().isEmpty()) return;
                 int quantity = Integer.parseInt(holder.edtQuantity.getText().toString());
                 if (cartItemSelectionListener != null)
                     cartItemSelectionListener.onItemSelected(itemAtPosition, quantity);

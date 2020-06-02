@@ -75,16 +75,16 @@ public class CatalogPresenter {
         productDAO.delete(product);
     }
 
+    public void setProductDAO(ProductDAO productDAO) {
+        this.productDAO = productDAO;
+    }
+
     public void setView(CatalogView view) {
         this.view = view;
     }
 
     public void clearView(){
         this.view = null;
-    }
-
-    public void setProductDAO(ProductDAO productDAO) {
-        this.productDAO = productDAO;
     }
 
     private boolean contains(Client client, OrderLine orderLine) {

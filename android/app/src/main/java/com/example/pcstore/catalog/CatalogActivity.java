@@ -169,6 +169,9 @@ public class CatalogActivity extends AppCompatActivity
             if (resultCode == RESULT_OK) {
                 Set<OrderLine> cart = (Set<OrderLine>) data.getSerializableExtra(CartActivity.UPDATED_CART);
                 viewModel.getPresenter().onCartSelected(client, cart);
+                adapter.setDataset(viewModel.getPresenter().getCatalog());
+                adapter.notifyDataSetChanged();
+
             }
         }
     }
