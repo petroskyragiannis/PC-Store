@@ -57,6 +57,7 @@ public class Component extends Product {
         return Objects.equals(requiredPorts, component.requiredPorts);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public int hashCode() {
         int result = super.hashCode();

@@ -185,11 +185,11 @@ public class OrderActivity extends AppCompatActivity implements OrderView {
             viewModel.getPresenter().onItemSelected(order, payment);
             if (payment.equals(Payment.CARD) && client.getCard()==null) {
                 txtCardInfo.setVisibility(View.VISIBLE);
-                btnCardInfo.setVisibility(view.VISIBLE);
+                btnCardInfo.setVisibility(View.VISIBLE);
             }
             else {
                 txtCardInfo.setVisibility(View.INVISIBLE);
-                btnCardInfo.setVisibility(view.INVISIBLE);
+                btnCardInfo.setVisibility(View.INVISIBLE);
             }
 
         }
@@ -204,11 +204,11 @@ public class OrderActivity extends AppCompatActivity implements OrderView {
             viewModel.getPresenter().onItemSelected(order, delivery);
             if (delivery.equals(Delivery.ADDRESS) && client.getAddress()==null) {
                 txtAddress.setVisibility(View.VISIBLE);
-                btnAddress.setVisibility(view.VISIBLE);
+                btnAddress.setVisibility(View.VISIBLE);
             }
             else {
                 txtAddress.setVisibility(View.INVISIBLE);
-                btnAddress.setVisibility(view.INVISIBLE);
+                btnAddress.setVisibility(View.INVISIBLE);
             }
         }
         @Override

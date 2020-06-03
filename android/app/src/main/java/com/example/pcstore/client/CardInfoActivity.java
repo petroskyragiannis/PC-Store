@@ -140,8 +140,7 @@ public class CardInfoActivity extends AppCompatActivity{
             if (calendar.get(Calendar.MONTH) < curr.get(Calendar.MONTH))
                 return true;
             else if (calendar.get(Calendar.MONTH) == curr.get(Calendar.MONTH))
-                if (calendar.get(Calendar.DAY_OF_MONTH) <= curr.get(Calendar.DAY_OF_MONTH))
-                    return true;
+                return calendar.get(Calendar.DAY_OF_MONTH) <= curr.get(Calendar.DAY_OF_MONTH);
         return false;
     }
 

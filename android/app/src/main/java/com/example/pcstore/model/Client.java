@@ -36,16 +36,12 @@ public class Client extends User {
 
     //Wishlist Methods
     public void addToWishlist(Product p) {
-        if (!wishlist.contains(p)) {
-            wishlist.add(p);
-        }
+        wishlist.add(p);
     }
 
     public void removeFromWishlist(Product p) {
         if (!wishlist.isEmpty())
-            if (wishlist.contains(p)) {
-                wishlist.remove(p);
-            }
+            wishlist.remove(p);
     }
 
     //Getters and Setters
