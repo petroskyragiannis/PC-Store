@@ -51,7 +51,6 @@ public class CartPresenter {
             SimpleOrderLine simpleOrderLine = (SimpleOrderLine) orderLine;
             deleteProduct(simpleOrderLine.getProduct());
             simpleOrderLine.restoreStock();
-
             simpleOrderLine.setQuantity(quantity);
             simpleOrderLine.updateStock();
             saveProduct(simpleOrderLine.getProduct());
@@ -68,8 +67,8 @@ public class CartPresenter {
         return true;
     }
 
-    public void returnCart() {
-        view.returnCart();
+    public void returnCart(Client client) {
+        view.returnCart(client);
     }
 
     public void saveProduct(Product product) {
@@ -91,4 +90,5 @@ public class CartPresenter {
     public void clearView() {
         this.view = null;
     }
+
 }

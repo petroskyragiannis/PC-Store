@@ -42,8 +42,7 @@ public class WishlistActivity extends AppCompatActivity
         final WishlistPresenter presenter = viewModel.getPresenter();
         presenter.setView(this);
 
-        presenter.setupList(client.getWishlist());
-        List<Product> wishlist = presenter.getList();
+        List<Product> wishlist = presenter.getList(client.getWishlist());
 
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -61,12 +60,14 @@ public class WishlistActivity extends AppCompatActivity
     @Override
     public void onItemSelected(Product item) {
         viewModel.getPresenter().onItemSelected(client, item);
+        List<Product> wishlist = viewModel.getPresenter().getList(client.getWishlist());
+        adapter.setDataset(wishlist);
         adapter.notifyDataSetChanged();
-        viewModel.getPresenter().returnWishlist();
+        viewModel.getPresenter().returnWishlist(client);
     }
 
     @Override
-    public void returnWishlist() {
+    public void returnWishlist(Client client) {
         Intent intent = new Intent();
         intent.putExtra(UPDATED_WISHLIST, (Serializable) client.getWishlist());
         setResult(RESULT_OK, intent);

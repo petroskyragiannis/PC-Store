@@ -9,6 +9,7 @@ import com.example.pcstore.model.Payment;
 import java.util.GregorianCalendar;
 
 public class OrderPresenter {
+
     private OrderView view;
     private OrderDAO orderDAO;
 
@@ -20,7 +21,7 @@ public class OrderPresenter {
     public boolean completeOrder(Order order) {
         if (order.getClient().getName() == ""|| order.getClient().getSurname() == null
         || order.getClient().getPhoneNumber() == null || order.getClient().getEmail() == null ) {
-            view.showStatus("Missing Personal Information.");
+            view.showStatus("Missing personal information.");
             return false;
         }
         if (order.getDeliveryMethod()== Delivery.ADDRESS) {

@@ -80,7 +80,7 @@ public class CartActivity extends AppCompatActivity
         adapter.setDataset(viewModel.getPresenter().getCartList(client.getCart()));
         adapter.notifyDataSetChanged();
         // Return Cart
-        viewModel.getPresenter().returnCart();
+        viewModel.getPresenter().returnCart(client);
     }
 
     @Override
@@ -90,12 +90,12 @@ public class CartActivity extends AppCompatActivity
             adapter.setDataset(viewModel.getPresenter().getCartList(client.getCart()));
             adapter.notifyDataSetChanged();
             // Return Cart
-            viewModel.getPresenter().returnCart();
+            viewModel.getPresenter().returnCart(client);
         }
     }
 
     @Override
-    public void returnCart() {
+    public void returnCart(Client client) {
         Intent intent = new Intent();
         intent.putExtra(UPDATED_CART, (Serializable) client.getCart());
         setResult(RESULT_OK, intent);

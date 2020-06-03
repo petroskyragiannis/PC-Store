@@ -33,10 +33,13 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
         }
     }
 
-    public WishlistAdapter(List<Product> mDataset) {
-        itemList = mDataset;
+    public WishlistAdapter(List<Product> dataset) {
+        itemList = dataset;
     }
 
+    public void setDataset(List<Product> dataset) {
+        itemList = dataset;
+    }
 
     public void setItemSelectionListener(ItemSelectionListener<Product> itemSelectionListener) {
         this.itemSelectionListener = itemSelectionListener;

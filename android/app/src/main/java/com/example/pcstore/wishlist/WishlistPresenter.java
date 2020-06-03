@@ -10,31 +10,21 @@ import java.util.Set;
 public class WishlistPresenter {
 
     private WishlistView view;
-    private List<Product> list;
 
-    public WishlistPresenter() {
-        list = new ArrayList<>();
-    }
+    public WishlistPresenter() {}
 
-    public void setupList(Set<Product> set) {
+    public List<Product> getList(Set<Product> set) {
+        List<Product> list = new ArrayList<>();
         list.addAll(set);
+        return list;
     }
 
     public void onItemSelected(Client client, Product product) {
         client.removeFromWishlist(product);
-        list.remove(product);
     }
 
-    public void returnWishlist() {
-        view.returnWishlist();
-    }
-
-    public List<Product> getList() {
-        return list;
-    }
-
-    public void setList(List<Product> list) {
-        this.list = list;
+    public void returnWishlist(Client client) {
+        view.returnWishlist(client);
     }
 
     public void setView(WishlistView view) {

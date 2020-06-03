@@ -35,10 +35,11 @@ public class CatalogPresenter {
         return false;
     }
 
-    public void onItemSelectedWishlist(Client client, Product product) {
-        if (client.getWishlist().contains(product)) return;
+    public boolean onItemSelectedWishlist(Client client, Product product) {
+        if (client.getWishlist().contains(product)) return false;
         client.addToWishlist(product);
         view.showStatus(product.getName() + " added to wishlist.");
+        return true;
     }
 
     public boolean onPcConfigurationSelected(Client client, PcConfiguration pcConfiguration) {
@@ -90,13 +91,12 @@ public class CatalogPresenter {
     private boolean contains(Client client, OrderLine orderLine) {
         if (orderLine instanceof SimpleOrderLine) {
             SimpleOrderLine simpleOrderLine = (SimpleOrderLine) orderLine;
-            for (OrderLine o: client.getCart()) {
+            for (OrderLine o: client.getCart())
                 if (o instanceof SimpleOrderLine) {
                     SimpleOrderLine s = (SimpleOrderLine) o;
                     if (simpleOrderLine.getProduct().equals(s.getProduct()))
                         return true;
                 }
-            }
         } else if (orderLine instanceof PcConfiguration) {
             PcConfiguration pcConfiguration = (PcConfiguration) orderLine;
             for (OrderLine o: client.getCart()) {
